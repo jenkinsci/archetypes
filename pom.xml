@@ -22,8 +22,9 @@
         <tag>HEAD</tag>
     </scm>
     <modules>
-        <module>empty</module>
+        <module>empty-plugin</module>
     </modules>
+    <!-- TODO configure release plugin to choose better tag name -->
     <build>
         <pluginManagement>
             <plugins>
