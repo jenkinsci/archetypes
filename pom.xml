@@ -7,7 +7,7 @@
         <relativePath />
     </parent>
     <groupId>io.jenkins.archetypes</groupId>
-    <artifactId>pom</artifactId>
+    <artifactId>archetypes-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Jenkins Archetypes</name>
@@ -21,5 +21,18 @@
         <url>https://github.com/jenkinsci/archetypes/</url>
         <tag>HEAD</tag>
     </scm>
-    <modules/>
+    <modules>
+        <module>empty</module>
+    </modules>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>2.10.4</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
