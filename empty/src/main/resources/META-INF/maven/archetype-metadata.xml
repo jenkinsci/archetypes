@@ -16,5 +16,13 @@
             <directory>src/main/java/org/jenkinsci/plugins</directory>
         </fileSet>
     </fileSets>
+    <requiredProperties>
+        <requiredProperty key="groupId">
+            <defaultValue>unused</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="package">
+            <defaultValue>unused</defaultValue>
+        </requiredProperty>
+    </requiredProperties>
 </archetype-descriptor>
 
