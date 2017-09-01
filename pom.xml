@@ -8,7 +8,7 @@
     </parent>
     <groupId>io.jenkins.archetypes</groupId>
     <artifactId>archetypes-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>pom</packaging>
     <name>Jenkins Archetypes</name>
     <description>Maven archetypes of useful things you may want to create in the Jenkins project.</description>
@@ -19,7 +19,7 @@
         <connection>scm:git:git@github.com/jenkinsci/archetypes.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/jenkinsci/archetypes.git</developerConnection>
         <url>https://github.com/jenkinsci/archetypes/</url>
-        <tag>HEAD</tag>
+        <tag>archetypes-parent-1.0</tag>
     </scm>
     <modules>
         <module>empty</module>
