@@ -3,7 +3,7 @@
         <mirror>
             <id>azure</id>
             <url>https://repo.azure.jenkins.io/public/</url> <!-- INFRA-1176 -->
-            <mirrorOf>repo.jenkins-ci.org</mirrorOf>
+            <mirrorOf>*</mirrorOf>
         </mirror>
     </mirrors>
 </settings>
