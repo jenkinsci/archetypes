@@ -36,7 +36,7 @@ class TestSharedLibrary extends BasePipelineTest {
                                .retriever(localSource(sharedLibs))
                                .build()
         helper.registerSharedLibrary(library)
-        runScript('${packageInPathFormat}/pipelineUsingSharedLib.jenkins')
+        runScript('${packageInPathFormat}/pipelineUsingSharedLib.groovy')
         printCallStack()
     }
 }

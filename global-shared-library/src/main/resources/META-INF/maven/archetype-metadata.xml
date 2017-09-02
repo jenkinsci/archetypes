@@ -46,7 +46,7 @@
         <fileSet packaged="true" filtered="true">
             <directory>unit-tests/src/main/jenkins</directory>
             <includes>
-                <include>pipelineUsingSharedLib.jenkins</include>
+                <include>pipelineUsingSharedLib.groovy</include>
             </includes>
         </fileSet>
         <fileSet filtered="true" packaged="true">
