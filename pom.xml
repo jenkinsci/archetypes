@@ -24,7 +24,6 @@
     <modules>
         <module>empty-plugin</module>
         <module>hello-world</module>
-        <module>scripted-pipeline</module>
     </modules>
     <build>
         <pluginManagement>
@@ -62,4 +61,12 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile> <!-- move into main section if and when added to @jenkinsci -->
+            <id>pipeline-unit</id>
+            <modules>
+                <module>scripted-pipeline</module>
+            </modules>
+        </profile>
+    </profiles>
 </project>

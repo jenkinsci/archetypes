@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('main') {
             steps {
-                sh 'mvn -B -s settings-azure.xml -Darchetype.test.settingsFile=`pwd`/settings-azure.xml clean verify'
+                sh 'mvn -B -s settings-azure.xml -Darchetype.test.settingsFile=`pwd`/settings-azure.xml -P pipeline-unit clean verify'
             }
         }
     }
