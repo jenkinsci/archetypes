@@ -53,3 +53,5 @@ and check the catalog:
 ```sh
 curl -s http://repo1.maven.org/maven2/archetype-catalog.xml | egrep -i 'hudson|jenkins'
 ```
+
+Currently not working: [OSSRH-34275](https://issues.sonatype.org/browse/OSSRH-34275)
