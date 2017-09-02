@@ -8,4 +8,5 @@
     </parent>
     <artifactId>scripted-pipeline</artifactId>
     <name>Scripted Jenkins Pipeline</name>
+    <description>Uses the Jenkins Pipeline Unit mock library to test the logic inside a Pipeline script.</description>
 </project>

@@ -9,4 +9,5 @@
     <groupId>io.jenkins.archetypes</groupId>
     <artifactId>empty-plugin</artifactId>
     <name>Empty Jenkins Plugin</name>
+    <description>Skeleton of a Jenkins plugin with a POM and an empty source tree.</description>
 </project>
