@@ -25,6 +25,7 @@
         <module>empty-plugin</module>
         <module>hello-world</module>
         <module>scripted-pipeline</module>
+        <module>scm-plugin</module>
     </modules>
     <build>
         <pluginManagement>
