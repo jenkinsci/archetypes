@@ -23,6 +23,7 @@
     </scm>
     <modules>
         <module>empty</module>
+        <module>hello-world</module>
     </modules>
     <build>
         <pluginManagement>
