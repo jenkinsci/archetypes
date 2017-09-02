@@ -11,14 +11,22 @@
     <version>${version}</version>
     <packaging>hpi</packaging>
     <properties>
+        <!-- Baseline Jenkins version you use to build the plugin. Users must have this version or newer to run. -->
         <jenkins.version>2.7.3</jenkins.version>
         <workflow-step-api-plugin.version>2.12</workflow-step-api-plugin.version>
         <workflow-support-plugin.version>2.14</workflow-support-plugin.version>
         <workflow-cps-plugin.version>2.39</workflow-cps-plugin.version>
+        <!-- Other properties you may want to use:
+          ~ java.level: set to 6 if your jenkins.version <= 1.611
+          ~ jenkins-test-harness.version: Jenkins Test Harness version you use to test the plugin. For Jenkins version >= 1.580.1 use JTH 2.0 or higher.
+          ~ hpi-plugin.version: The HPI Maven Plugin version used by the plugin..
+          ~ stapler-plugin.version: The Stapler Maven plugin version required by the plugin.
+     -->
     </properties>
     <name>TODO Plugin</name>
     <description>TODO</description>
     <url>https://wiki.jenkins-ci.org/display/JENKINS/TODO+Plugin</url>
+    <!-- The default licence for Jenkins OSS Plugins is MIT. Substitute for the applicable one if needed. -->
     <licenses>
         <license>
             <name>MIT License</name>
@@ -81,14 +89,17 @@
             <version>${workflow-support-plugin.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins.workflow</groupId>
-            <artifactId>workflow-support</artifactId>
-            <version>${workflow-support-plugin.version}</version>
-            <classifier>tests</classifier>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
+
+    <!-- If you want this to appear on the wiki page:
+    <developers>
+      <developer>
+        <id>bhacker</id>
+        <name>Bob Q. Hacker</name>
+        <email>bhacker@nowhere.net</email>
+      </developer>
+    </developers> -->
+
     <!-- Assuming you want to host on @jenkinsci:
     <scm>
         <connection>scm:git:git://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>

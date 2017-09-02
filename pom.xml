@@ -23,8 +23,8 @@
     </scm>
     <modules>
         <module>empty-plugin</module>
-        <module>scripted-pipeline</module>
         <module>hello-world</module>
+        <module>scripted-pipeline</module>
     </modules>
     <!-- TODO configure release plugin to choose better tag name -->
     <build>

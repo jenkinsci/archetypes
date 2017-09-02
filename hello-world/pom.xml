@@ -9,4 +9,5 @@
     <groupId>io.jenkins.archetypes</groupId>
     <artifactId>hello-world-plugin</artifactId>
     <name>Hello World Builder Jenkins Plugin</name>
+    <description>Skeleton of a Jenkins plugin with a POM and an example build step.</description>
 </project>
