@@ -14,15 +14,6 @@ pipeline {
             steps {
                 sh 'mvn -B clean verify'
             }
-            /* TBD archetype:integration-test:
-            post {
-                failure {
-                    catchError { // JENKINS-42478: in case the failure occurred prior to getting the node
-                        archiveArtifacts artifacts: 'target/its/ * /build.log', allowEmptyArchive: true
-                    }
-                }
-            }
-            */
         }
     }
 }

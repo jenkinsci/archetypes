@@ -22,9 +22,11 @@
         <tag>HEAD</tag>
     </scm>
     <modules>
-        <module>empty</module>
+        <module>empty-plugin</module>
+        <module>scripted-pipeline</module>
         <module>hello-world</module>
     </modules>
+    <!-- TODO configure release plugin to choose better tag name -->
     <build>
         <pluginManagement>
             <plugins>
@@ -35,5 +37,20 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-archetype-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>integration-test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 </project>
