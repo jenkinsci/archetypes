@@ -3,7 +3,7 @@
     <parent>
         <groupId>org.kohsuke</groupId>
         <artifactId>pom</artifactId>
-        <version>17</version> <!-- TODO 18 once synched -->
+        <version>18</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.archetypes</groupId>
@@ -33,6 +33,13 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>2.10.4</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonatype.plugins</groupId>
+                    <artifactId>nexus-staging-maven-plugin</artifactId>
+                    <configuration>
+                        <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
