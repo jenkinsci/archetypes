@@ -6,6 +6,7 @@
         <artifactId>archetypes-parent</artifactId>
         <version>1.1-SNAPSHOT</version>
     </parent>
+    <packaging>maven-archetype</packaging>
     <artifactId>scripted-pipeline</artifactId>
     <name>Scripted Jenkins Pipeline</name>
     <description>Uses the Jenkins Pipeline Unit mock library to test the logic inside a Pipeline script.</description>
