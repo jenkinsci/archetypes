@@ -25,7 +25,6 @@
         <module>empty-plugin</module>
         <module>scripted-pipeline</module>
     </modules>
-    <!-- TODO configure release plugin to choose better tag name -->
     <build>
         <pluginManagement>
             <plugins>
@@ -52,6 +51,13 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <tagNameFormat>archetypes-@{project.version}</tagNameFormat>
+                </configuration>
             </plugin>
         </plugins>
     </build>
