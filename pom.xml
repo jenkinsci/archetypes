@@ -23,6 +23,7 @@
     </scm>
     <modules>
         <module>empty-plugin</module>
+        <module>hello-world</module>
         <module>scripted-pipeline</module>
     </modules>
     <build>
