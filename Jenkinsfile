@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('main') {
             steps {
-                sh 'mvn -B clean verify'
+                sh 'mvn -B -s settings-azure.xml clean verify'
             }
         }
     }
