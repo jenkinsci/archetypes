@@ -12,14 +12,7 @@ pipeline {
     stages {
         stage('main') {
             steps {
-                sh 'mvn -B clean install archetype:integration-test'
-            }
-            post {
-                failure {
-                    catchError { // JENKINS-42478: in case the failure occurred prior to getting the node
-                        archiveArtifacts artifacts: '**/target/test-classes/**/*', allowEmptyArchive: true
-                    }
-                }
+                sh 'mvn -B clean verify'
             }
         }
     }

@@ -9,18 +9,4 @@
     <groupId>io.jenkins.archetypes</groupId>
     <artifactId>empty-plugin</artifactId>
     <name>Empty Jenkins Plugin</name>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>2.3</version>
-                <configuration>
-                    <!-- Required for testing empty directories -->
-                    <includeEmptyDirs>true</includeEmptyDirs>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>
