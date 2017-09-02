@@ -4,10 +4,6 @@ class Utils implements Serializable {
 
 	def script
 
-	Utils() {
-
-	}
-
 	Utils(script) {
 		this.script = script
 	}
