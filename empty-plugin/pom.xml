@@ -4,8 +4,9 @@
     <parent>
         <groupId>io.jenkins.archetypes</groupId>
         <artifactId>archetypes-parent</artifactId>
-        <version>1.1-SNAPSHOT</version>
+        <version>1.2-SNAPSHOT</version>
     </parent>
+    <packaging>maven-archetype</packaging>
     <groupId>io.jenkins.archetypes</groupId>
     <artifactId>empty-plugin</artifactId>
     <name>Empty Jenkins Plugin</name>

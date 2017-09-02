@@ -3,17 +3,18 @@
     <parent>
         <groupId>org.kohsuke</groupId>
         <artifactId>pom</artifactId>
-        <version>17</version> <!-- TODO 18 once synched -->
+        <version>18</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.archetypes</groupId>
     <artifactId>archetypes-parent</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.2-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Jenkins Archetypes</name>
     <description>Maven archetypes of useful things you may want to create in the Jenkins project.</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <archetype.version>3.0.1</archetype.version>
     </properties>
     <scm>
         <connection>scm:git:git@github.com/jenkinsci/archetypes.git</connection>
@@ -24,9 +25,45 @@
     <modules>
         <module>empty-plugin</module>
         <module>hello-world</module>
-        <module>scripted-pipeline</module>
     </modules>
+    <!-- These developers currently have write access to release to sonatype OSS -->
+    <developers>
+        <developer>
+            <id>jglick</id>
+            <name>Jesse Glick</name>
+            <email>jglick@cloudbees.com</email>
+            <roles>
+                <role>release</role>
+                <role>maintainer</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>rsandell</id>
+            <name>Robert Sandell</name>
+            <email>rsandell@cloudbees.com</email>
+            <roles>
+                <role>release</role>
+                <role>maintainer</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>christ66</id>
+            <name>Steven Christou</name>
+            <email>schristou88@gmail.com</email>
+            <roles>
+                <role>release</role>
+                <role>maintainer</role>
+            </roles>
+        </developer>
+    </developers>
     <build>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.archetype</groupId>
+                <artifactId>archetype-packaging</artifactId>
+                <version>${archetype.version}</version>
+            </extension>
+        </extensions>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -34,32 +71,37 @@
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>2.10.4</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.sonatype.plugins</groupId>
+                    <artifactId>nexus-staging-maven-plugin</artifactId>
+                    <configuration>
+                        <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-archetype-plugin</artifactId>
+                    <version>${archetype.version}</version>
+                    <configuration>
+                        <skip>${skipTests}</skip>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>2.5.3</version>
+                    <configuration>
+                        <tagNameFormat>archetypes-@{project.version}</tagNameFormat>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-archetype-plugin</artifactId>
-                <version>3.0.1</version>
-                <executions>
-                    <execution>
-                        <phase>integration-test</phase>
-                        <goals>
-                            <goal>integration-test</goal>
-                        </goals>
-                        <configuration>
-                            <skip>${skipTests}</skip>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.5.3</version>
-                <configuration>
-                    <tagNameFormat>archetypes-@{project.version}</tagNameFormat>
-                </configuration>
-            </plugin>
-        </plugins>
     </build>
+    <profiles>
+        <profile> <!-- move into main section if and when added to @jenkinsci -->
+            <id>pipeline-unit</id>
+            <modules>
+                <module>scripted-pipeline</module>
+            </modules>
+        </profile>
+    </profiles>
 </project>
