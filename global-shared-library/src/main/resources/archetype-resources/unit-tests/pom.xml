@@ -21,7 +21,6 @@
         <groovy.version>2.4.3</groovy.version>
         <junit.version>4.12</junit.version>
         <jenkins-pipeline-unit.version>1.1</jenkins-pipeline-unit.version>
-        <ivy.version>2.4.0</ivy.version>
     </properties>
     <dependencies>
         <dependency>
