@@ -101,6 +101,7 @@
             <id>pipeline-unit</id>
             <modules>
                 <module>scripted-pipeline</module>
+                <module>global-shared-library</module>
             </modules>
         </profile>
     </profiles>
