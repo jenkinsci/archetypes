@@ -10,4 +10,6 @@
     <artifactId>scm-plugin</artifactId>
     <name>SCM Jenkins Plugin</name>
     <description>Skeleton of an SCM Jenkins plugin with a POM and an example.</description>
+
+    <packaging>maven-archetype</packaging>
 </project>
