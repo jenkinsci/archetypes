@@ -42,16 +42,14 @@ mvn -B release:{prepare,perform}
 In addition to needing write permission to this repository, you must have been preauthorized to deploy to the `io/jenkins/archetypes/` sector of OSSRH.
 
 Artifacts will [appear on Maven Central](http://repo1.maven.org/maven2/io/jenkins/archetypes/) after a few minutes.
+But as noted in OSSRH-34275, the catalog only gets regenerated weekly; to check it:
+
+```sh
+curl -s http://repo1.maven.org/maven2/archetype-catalog.xml | xmlstarlet sel -R -I -t -c '//archetype[groupId="io.jenkins.archetypes"]'
+```
+
 If testing their appearance, be sure to use a clean environment:
 
 ```sh
 docker run -ti --rm --name mvn --entrypoint /bin/bash maven:3.5.0-jdk-8
 ```
-
-and check the catalog:
-
-```sh
-curl -s http://repo1.maven.org/maven2/archetype-catalog.xml | egrep -i 'hudson|jenkins'
-```
-
-Currently not working: [OSSRH-34275](https://issues.sonatype.org/browse/OSSRH-34275)
