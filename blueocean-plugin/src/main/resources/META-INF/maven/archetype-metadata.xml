@@ -9,15 +9,10 @@
     </requiredProperties>
     <fileSets>
         <fileSet filtered="true">
-            <directory>.</directory>
+            <directory/>
             <includes>
                 <include>pom.xml</include>
                 <include>package.json</include>
-            </includes>
-        </fileSet>
-        <fileSet>
-            <directory>.</directory>
-            <includes>
                 <include>.babelrc</include>
                 <include>.mvn_exec_node</include>
                 <include>README.md</include>
