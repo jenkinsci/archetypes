@@ -25,6 +25,7 @@
     <modules>
         <module>empty-plugin</module>
         <module>hello-world</module>
+        <module>global-configuration</module>
     </modules>
     <!-- These developers currently have write access to release to sonatype OSS -->
     <developers>
