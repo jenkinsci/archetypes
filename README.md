@@ -28,7 +28,7 @@ To create a new archetype, file a pull request creating a new `module`, followin
 * `pom.xml` must have `<packaging>maven-archetype</packaging>`
 * should also have a `<description>`
 * `src/main/resources/META-INF/maven/archetype-metadata.xml` defines files and directories to be copied & processed
-* `src/main/resources/archetype-resources/`: the template for the new component
+* `src/main/resources/archetype-resources/`: the template for the new component (remember a sample `.gitignore`)
 * `src/test/resources/projects/testInstall/{goal.txt,archetype.properties}`: defines an integration test, proving that the archetype can not just be instantiated, but builds successfully thereafter
 
 Archetypes are expected to use technologies hosted in @jenkinsci (or a few other places pulled in by Jenkins core, such as @stapler).
