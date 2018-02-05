@@ -7,7 +7,7 @@
             <defaultValue>org.sample</defaultValue>
         </requiredProperty>
         <requiredProperty key="package">
-            <defaultValue>org.jenkinsci.pipeline.sample</defaultValue>
+            <defaultValue>io.jenkins.pipeline.sample</defaultValue>
         </requiredProperty>
     </requiredProperties>
     <fileSets>

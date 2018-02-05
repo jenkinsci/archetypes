@@ -4,7 +4,7 @@
             <defaultValue>unused</defaultValue>
         </requiredProperty>
         <requiredProperty key="package">
-            <defaultValue>org.jenkinsci.plugins.sample</defaultValue>
+            <defaultValue>io.jenkins.plugins.sample</defaultValue>
         </requiredProperty>
     </requiredProperties>
     <fileSets>

@@ -13,10 +13,10 @@
             </includes>
         </fileSet>
         <fileSet>
-            <directory>src/main/java/org/jenkinsci/plugins</directory>
+            <directory>src/main/java/io/jenkins/plugins</directory>
         </fileSet>
         <fileSet>
-            <directory>src/test/java/org/jenkinsci/plugins</directory>
+            <directory>src/test/java/io/jenkins/plugins</directory>
         </fileSet>
     </fileSets>
     <requiredProperties>

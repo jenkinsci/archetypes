@@ -7,6 +7,7 @@
         <version>2.36</version>
         <relativePath />
     </parent>
+    <groupId>io.jenkins.plugins</groupId>
     <artifactId>${artifactId}</artifactId>
     <version>${version}</version>
     <packaging>hpi</packaging>
