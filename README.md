@@ -23,6 +23,11 @@ The NetBeans IDE also offers a [plugin for Jenkins development](https://github.c
 
 # Changes
 
+## 1.3 (2018 Feb 09)
+
+* Changed default package name to use `io.jenkins.` prefix.
+* Sundry POM updates.
+
 ## 1.2 (2017 Oct 12)
 
 * Added sample of `GlobalConfiguration`.
@@ -61,3 +66,10 @@ If testing their appearance, be sure to use a clean environment:
 ```sh
 docker run -ti --rm --name mvn --entrypoint /bin/bash maven:3.5.0-jdk-8
 ```
+
+# TODO
+
+* `HelloWorldBuilderTest` should use `BuildWatcher`
+* convert `ui-samples-plugin` to an archetype
+* `.gitignore` files do not get copied to actual archetype
+* add `Step` sample as per [this example](https://github.com/jglick/wfdev/blob/pipeline/src/main/java/demo/CountGreetingsStep.java)
