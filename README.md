@@ -23,6 +23,10 @@ The NetBeans IDE also offers a [plugin for Jenkins development](https://github.c
 
 # Changes
 
+## 1.4 (2018 Mar 12)
+
+* Added `JenkinsPipelineUnit` archetypes.
+
 ## 1.3 (2018 Feb 09)
 
 * Changed default package name to use `io.jenkins.` prefix.
