@@ -26,6 +26,8 @@
         <module>empty-plugin</module>
         <module>hello-world</module>
         <module>global-configuration</module>
+        <module>scripted-pipeline</module>
+        <module>global-shared-library</module>
     </modules>
     <!-- These developers currently have write access to release to sonatype OSS -->
     <developers>
@@ -98,13 +100,6 @@
         </pluginManagement>
     </build>
     <profiles>
-        <profile> <!-- move into main section if and when added to @jenkinsci -->
-            <id>pipeline-unit</id>
-            <modules>
-                <module>scripted-pipeline</module>
-                <module>global-shared-library</module>
-            </modules>
-        </profile>
         <profile> <!-- integration tests are a bit slow, no need to run them twice per release -->
             <id>skip-tests-on-release</id>
             <activation>
