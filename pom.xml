@@ -105,5 +105,17 @@
                 <module>global-shared-library</module>
             </modules>
         </profile>
+        <profile> <!-- integration tests are a bit slow, no need to run them twice per release -->
+            <id>skip-tests-on-release</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <properties>
+                <skipTests>true</skipTests>
+            </properties>
+        </profile>
     </profiles>
 </project>
