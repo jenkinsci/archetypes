@@ -16,7 +16,6 @@
         <java.level>7</java.level>
     </properties>
     <name>TODO Plugin</name>
-    <description>TODO</description>
     <licenses>
         <license>
             <name>MIT License</name>

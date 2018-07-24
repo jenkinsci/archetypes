@@ -16,7 +16,6 @@
         <java.level>8</java.level>
     </properties>
     <name>TODO Plugin</name>
-    <description>TODO</description>
     <!-- The default licence for Jenkins OSS Plugins is MIT. Substitute for the applicable one if needed. -->
     <licenses>
         <license>
