@@ -12,7 +12,7 @@
     <version>${version}</version>
     <packaging>hpi</packaging>
     <properties>
-        <jenkins.version>2.7.3</jenkins.version>
+        <jenkins.version>2.164.1</jenkins.version>
         <java.level>8</java.level>
     </properties>
     <name>TODO Plugin</name>
