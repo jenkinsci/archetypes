@@ -23,10 +23,10 @@ The NetBeans IDE also offers a [plugin for Jenkins development](https://github.c
 
 If you have defined a mirror like this in your `settings.xml` you might _not_ be able to use filter option as described above.
 ```xml
-> <mirror>
->   <id>repo.jenkins-ci.org-all</id>
->   <url>https://repo.jenkins-ci.org/public</url>
->   <mirrorOf>*</mirrorOf>
+ <mirror>
+   <id>repo.jenkins-ci.org-all</id>
+   <url>https://repo.jenkins-ci.org/public</url>
+   <mirrorOf>*</mirrorOf>
 </mirror>
 ```
 
