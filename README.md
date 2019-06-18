@@ -2,6 +2,8 @@
 
 Maven archetypes to help you create new components involving Jenkins, such as plugins.
 
+[![GitHub release](https://img.shields.io/github/release/jenkinsci/archetypes.svg?label=release)](https://github.com/jenkinsci/archetypes/releases/latest)
+
 # Usage
 
 To see all currently released archetypes and pick one to instantiate:
@@ -22,6 +24,13 @@ This has been deprecated in favor of the new archetypes, which cover more scenar
 The NetBeans IDE also offers a [plugin for Jenkins development](https://github.com/stapler/netbeans-stapler-plugin/blob/master/README.md) which offers a Jenkins plugin archetype via the **File » New Project** wizard.
 
 # Changes
+
+| WARNING: Changelogs have been moved to [GitHub Releases](https://github.com/jenkinsci/archetypes/releases) |
+| --- |
+
+## Newer versions
+
+See [GitHub Releases](https://github.com/jenkinsci/archetypes/releases)
 
 ## 1.4 (2018 Mar 12)
 
