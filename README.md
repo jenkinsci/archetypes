@@ -23,6 +23,15 @@ This has been deprecated in favor of the new archetypes, which cover more scenar
 
 The NetBeans IDE also offers a [plugin for Jenkins development](https://github.com/stapler/netbeans-stapler-plugin/blob/master/README.md) which offers a Jenkins plugin archetype via the **File » New Project** wizard.
 
+If you have defined a mirror like this in your `settings.xml` you might _not_ be able to use filter option as described above.
+```xml
+ <mirror>
+   <id>repo.jenkins-ci.org-all</id>
+   <url>https://repo.jenkins-ci.org/public</url>
+   <mirrorOf>*</mirrorOf>
+</mirror>
+```
+
 # Changes
 
 | WARNING: Changelogs have been moved to [GitHub Releases](https://github.com/jenkinsci/archetypes/releases) |
