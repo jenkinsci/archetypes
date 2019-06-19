@@ -14,7 +14,7 @@
     <description>Maven archetypes of useful things you may want to create in the Jenkins project.</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <archetype.version>3.0.1</archetype.version>
+        <archetype.version>3.1.1</archetype.version>
     </properties>
     <scm>
         <connection>scm:git:git@github.com/jenkinsci/archetypes.git</connection>
