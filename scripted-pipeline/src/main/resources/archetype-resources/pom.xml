@@ -53,7 +53,7 @@
             <plugin>
                 <groupId>org.codehaus.groovy</groupId>
                 <artifactId>groovy-eclipse-compiler</artifactId>
-                <version>2.9.2-01</version>
+                <version>3.4.0-01</version>
                 <extensions>true</extensions>
             </plugin>
             <plugin>
@@ -66,7 +66,7 @@
                     <dependency>
                         <groupId>org.codehaus.groovy</groupId>
                         <artifactId>groovy-eclipse-compiler</artifactId>
-                        <version>2.9.2-01</version>
+                        <version>3.4.0-01</version>
                     </dependency>
                     <!-- for 2.8.0-01 and later you must have an explicit dependency on groovy-eclipse-batch -->
                     <dependency>
