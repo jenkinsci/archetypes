@@ -21,6 +21,7 @@
         <groovy.version>2.4.17</groovy.version>
         <junit.version>4.12</junit.version>
         <jenkins-pipeline-unit.version>1.1</jenkins-pipeline-unit.version>
+        <groovy-eclipse-compiler.version>3.4.0-01</groovy-eclipse-compiler.version>
     </properties>
     <dependencies>
         <dependency>
@@ -59,7 +60,7 @@
             <plugin>
                 <groupId>org.codehaus.groovy</groupId>
                 <artifactId>groovy-eclipse-compiler</artifactId>
-                <version>2.9.2-01</version>
+                <version>${groovy-eclipse-compiler.version}</version>
                 <extensions>true</extensions>
             </plugin>
             <plugin>
@@ -72,7 +73,7 @@
                     <dependency>
                         <groupId>org.codehaus.groovy</groupId>
                         <artifactId>groovy-eclipse-compiler</artifactId>
-                        <version>2.9.2-01</version>
+                        <version>${groovy-eclipse-compiler.version}</version>
                     </dependency>
                     <!-- for 2.8.0-01 and later you must have an explicit dependency on groovy-eclipse-batch -->
                     <dependency>
