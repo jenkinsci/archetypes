@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:experimental
+# syntax=docker/dockerfile:1.1.1-experimental
 FROM maven:3.6.1-jdk-8
 COPY . /src
 WORKDIR /src
