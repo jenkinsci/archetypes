@@ -9,7 +9,7 @@ pipeline {
         stage('main') {
             steps {
                 timeout(time: 1, unit: 'HOURS') {
-                    sh 'docker version && docker build -t test .'
+                    sh 'docker version && DOCKER_BUILDKIT=1 docker build --progress plain --no-cache .'
                 }
             }
         }
