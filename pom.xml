@@ -97,6 +97,30 @@
                         <tagNameFormat>archetypes-@{project.version}</tagNameFormat>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>2.5</version>
+                    <executions>
+                        <execution>
+                            <id>copy-gitignore</id>
+                            <phase>process-sources</phase>
+                            <goals>
+                                <goal>copy-resources</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>${basedir}</outputDirectory>
+                                <resources>
+                                    <resource>
+                                        <directory>${basedir}/..</directory>
+                                        <includes>
+                                            <include>.gitignore</include>
+                                        </includes>
+                                    </resource>
+                                </resources>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
