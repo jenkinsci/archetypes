@@ -97,8 +97,22 @@
                         <tagNameFormat>archetypes-@{project.version}</tagNameFormat>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <addDefaultExcludes>false</addDefaultExcludes>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
     <profiles>
         <profile> <!-- integration tests are a bit slow, no need to run them twice per release -->

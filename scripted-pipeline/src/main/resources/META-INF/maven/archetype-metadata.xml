@@ -17,6 +17,7 @@
         <fileSet>
             <directory></directory>
             <includes>
+                <include>.gitignore</include>
                 <include>Jenkinsfile</include>
             </includes>
         </fileSet>

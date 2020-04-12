@@ -21,6 +21,7 @@
             <directory></directory>
             <includes>
                 <include>README.md</include>
+                <include>.gitignore</include>
             </includes>
         </fileSet>
         <!-- Shared Library sources -->

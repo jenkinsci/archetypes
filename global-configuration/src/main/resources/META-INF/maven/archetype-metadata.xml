@@ -8,6 +8,12 @@
         </requiredProperty>
     </requiredProperties>
     <fileSets>
+        <fileSet>
+            <directory/>
+            <includes>
+                <include>.gitignore</include>
+            </includes>
+        </fileSet>
         <fileSet filtered="true">
             <directory>.</directory>
             <includes>

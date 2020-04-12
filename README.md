@@ -93,5 +93,4 @@ docker run -ti --rm --name mvn --entrypoint /bin/bash maven:3.5.0-jdk-8
 
 * `HelloWorldBuilderTest` should use `BuildWatcher`
 * convert `ui-samples-plugin` to an archetype
-* `.gitignore` files do not get copied to actual archetype
 * add `Step` sample as per [this example](https://github.com/jglick/wfdev/blob/pipeline/src/main/java/demo/CountGreetingsStep.java)
