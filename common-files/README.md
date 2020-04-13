@@ -18,12 +18,14 @@ $H$H Getting started
 TODO Tell users how to configure your plugin here, include screenshots, pipeline examples and 
 configuration-as-code examples.
 
+#if( $hostOnJenkinsGitHub == "true" )
 $H$H Issues
 
 TODO Decide where you're going to host your issues, the default is Jenkins JIRA, but you can also enable GitHub issues,
 If you use GitHub issue there's no need for this section, else add the following line:
 
 Report issues and enhancements in the [Jenkins issue tracker](https://issues.jenkins-ci.org/).
+#end
 
 $H$H Contributing
 

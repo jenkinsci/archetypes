@@ -57,18 +57,9 @@ Prerequisites: _Java_, _Maven_ & _IntelliJ IDEA_
   mvn --version
   ```
   
-  ### IntelliJ IDEA
+### IDE configuration
 
-- Open the root directory of this project in IntelliJ IDEA.
-- If you are opening the first time, wait patiently while project dependencies are being downloaded.
-- Click `Run` in the menu. Select `Edit Configurations` in the menu item.
-- Click `Add New Configuration` (`+`) in the top left of the shown dialog. Select `Maven`.
-- Under `Parameters` tab group, `Working directory:` is `/path/to/${artifactId}-plugin`.
-- Under `Parameters` tab group, `Command line:` is `hpi:run`.
-- Verify that IntelliJ IDEA is not using bundled maven.
-  - Click `File` -> `Preferences...` -> `Build, Execution, Deployment` -> `Build Tools` -> `Maven`.
-  - `Maven home directory:` has `/path/to/apache-maven-x.y.z` value, not `Bundled (Maven 3)`.
-- Open <http://localhost:8080/jenkins/> to test the plugin locally.
+See [IDE configuration](https://jenkins.io/doc/developer/development-environment/ide-configuration/)
 
 ### CLI
 
