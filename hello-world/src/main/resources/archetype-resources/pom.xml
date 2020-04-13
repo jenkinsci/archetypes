@@ -20,6 +20,9 @@
         <java.level>8</java.level>
     </properties>
     <name>TODO Plugin</name>
+    #if( $hostOnJenkinsGitHub == "true" )<url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>#end
+
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -59,7 +62,10 @@
         </dependency>
     </dependencies>
 
-    <!-- The default licence for Jenkins OSS Plugins is MIT. Substitute for the applicable one if needed. -->
+    <!--
+    The default licence for Jenkins OSS Plugins is MIT. Substitute for the applicable one if needed.
+    Updating LICENSE.md as needed.
+    -->
     <licenses>
         <license>
             <name>MIT License</name>
@@ -76,15 +82,14 @@
       </developer>
     </developers> -->
 
-    #if( $hostOnJenkinsGitHub == "true" )
-    <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
-    <scm>
+    #if( $hostOnJenkinsGitHub == "true" )<scm>
         <connection>scm:git:git://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
         <tag>${scmTag}</tag>
-    </scm>
-    #end
+    </scm>#end
+
+
     <repositories>
         <repository>
             <id>repo.jenkins-ci.org</id>
