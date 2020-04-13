@@ -15,7 +15,7 @@ mvn archetype:generate -Dfilter=io.jenkins.archetypes:
 It is also possible to run this noninteractively:
 
 ```sh
-mvn archetype:generate -B -DarchetypeGroupId=io.jenkins.archetypes -DarchetypeArtifactId=empty-plugin -DarchetypeVersion=1.1 -DartifactId=somefeature
+mvn archetype:generate -B -DarchetypeGroupId=io.jenkins.archetypes -DarchetypeArtifactId=empty-plugin -DhostOnJenkinsGitHub=true -DarchetypeVersion=1.1 -DartifactId=somefeature
 ```
 
 In olden times, people used `mvn hpi:create` or even a web-based tool to create new plugins.
