@@ -12,7 +12,8 @@ if (properties.get("hostOnJenkinsGitHub") == "false") {
     ]
     def directoriesToRemove = [
             '.github',
-            '.dependabot'
+            '.dependabot',
+            '.mvn'
     ]
     filesToRemove.each {
         new File(it, projectPath.toFile()).delete()
