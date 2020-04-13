@@ -11,4 +11,51 @@
     <artifactId>empty-plugin</artifactId>
     <name>Empty Jenkins Plugin</name>
     <description>Skeleton of a Jenkins plugin with a POM and an empty source tree.</description>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-common-files</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/classes/archetype-resources</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/../common-files</directory>
+                                    <excludes>
+                                        <exclude>archetype-post-generate.groovy</exclude>
+                                    </excludes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-post-generate</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/classes/META-INF</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/../common-files</directory>
+                                    <includes>
+                                        <include>archetype-post-generate.groovy</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

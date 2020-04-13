@@ -1,16 +1,16 @@
-<archetype-descriptor xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd" name="empty Jenkins plugin">
+<archetype-descriptor
+    xsi:schemaLocation="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0
+       https://maven.apache.org/xsd/archetype-descriptor-1.1.0.xsd"
+    xmlns="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    name="empty Jenkins plugin">
     <fileSets>
-        <fileSet>
-            <directory/>
-            <includes>
-                <include>.gitignore</include>
-            </includes>
-        </fileSet>
         <fileSet filtered="true">
-            <directory>.</directory>
-            <includes>
-                <include>pom.xml</include>
-            </includes>
+            <directory/>
+            <excludes>
+                <exclude>src/**</exclude>
+                <exclude>pom.xml</exclude>
+            </excludes>
         </fileSet>
         <fileSet>
             <directory>src/main/resources</directory>
@@ -31,6 +31,9 @@
         </requiredProperty>
         <requiredProperty key="package">
             <defaultValue>unused</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="hostOnJenkinsGitHub">
+            <validationRegex>(true|false)</validationRegex>
         </requiredProperty>
     </requiredProperties>
 </archetype-descriptor>

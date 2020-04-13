@@ -65,6 +65,7 @@ To create a new archetype, file a pull request creating a new `module`, followin
 * `src/main/resources/META-INF/maven/archetype-metadata.xml` defines files and directories to be copied & processed
 * `src/main/resources/archetype-resources/`: the template for the new component (remember a sample `.gitignore`)
 * `src/test/resources/projects/testInstall/{goal.txt,archetype.properties}`: defines an integration test, proving that the archetype can not just be instantiated, but builds successfully thereafter
+* if it should have our standard templates for gitignore, readme etc, then copy the maven-resources-plugin config in empty-plugin
 
 Archetypes are expected to use technologies hosted in @jenkinsci (or a few other places pulled in by Jenkins core, such as @stapler).
 Other archetypes can be developed in a `profile` but will not be published.

@@ -16,16 +16,6 @@
         <java.level>8</java.level>
     </properties>
     <name>TODO Plugin</name>
-    <!--
-    The default licence for Jenkins OSS Plugins is MIT. Substitute for the applicable one if needed.
-    Updating LICENSE.md as needed.
-     -->
-    <licenses>
-        <license>
-            <name>MIT License</name>
-            <url>https://opensource.org/licenses/MIT</url>
-        </license>
-    </licenses>
 
     <dependencyManagement>
         <dependencies>
@@ -39,7 +29,18 @@
         </dependencies>
     </dependencyManagement>
 
-    <!-- If you want this to appear on the wiki page:
+    <!--
+    The default licence for Jenkins OSS Plugins is MIT. Substitute for the applicable one if needed.
+    Updating LICENSE.md as needed.
+     -->
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
+
+    <!-- If you want this to appear on the plugin site page:
     <developers>
       <developer>
         <id>bhacker</id>
@@ -48,14 +49,15 @@
       </developer>
     </developers> -->
 
-    <!-- Assuming you want to host on @jenkinsci:
+    #if( $hostOnJenkinsGitHub == "true" )
     <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
     <scm>
         <connection>scm:git:git://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
     </scm>
-    -->
+    #end
+
     <repositories>
         <repository>
             <id>repo.jenkins-ci.org</id>
