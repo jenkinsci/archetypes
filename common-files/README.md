@@ -29,9 +29,9 @@ Report issues and enhancements in the [Jenkins issue tracker](https://issues.jen
 
 $H$H Contributing
 
-TODO review the included CONTRIBUTING file and make sure it is appropriate for your plugin.
+TODO review the default [CONTRIBUTING](https://github.com/jenkinsci/.github/blob/master/CONTRIBUTING.md) file and make sure it is appropriate for your plugin, if not then add your own one adapted from the base file
 
-Refer to our [contribution guidelines](.github/CONTRIBUTING.md)
+Refer to our [contribution guidelines](https://github.com/jenkinsci/.github/blob/master/CONTRIBUTING.md)
 
 $H$H LICENSE
 
