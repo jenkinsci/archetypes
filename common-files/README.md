@@ -22,7 +22,7 @@ configuration-as-code examples.
 $H$H Issues
 
 TODO Decide where you're going to host your issues, the default is Jenkins JIRA, but you can also enable GitHub issues,
-If you use GitHub issue there's no need for this section, else add the following line:
+If you use GitHub issues there's no need for this section; else add the following line:
 
 Report issues and enhancements in the [Jenkins issue tracker](https://issues.jenkins-ci.org/).
 #end
