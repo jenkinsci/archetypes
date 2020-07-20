@@ -9,22 +9,37 @@
     </parent>
     <groupId>io.jenkins.plugins</groupId>
     <artifactId>${artifactId}</artifactId>
-    <version>${version}</version>
+    <version>${revision}${changelist}</version>
     <packaging>hpi</packaging>
     <properties>
+        <revision>1.0</revision>
+        <changelist>-SNAPSHOT</changelist>
         <jenkins.version>2.235.1</jenkins.version>
         <java.level>8</java.level>
     </properties>
     <name>TODO Plugin</name>
-    <!-- The default licence for Jenkins OSS Plugins is MIT. Substitute for the applicable one if needed. -->
-    <licenses>
+    #if( $hostOnJenkinsGitHub == "true" )<url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>#end
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.jenkins.tools.bom</groupId>
+                <artifactId>bom-2.235.x</artifactId>
+                <version>11</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    #if( $hostOnJenkinsGitHub == "true" )<licenses>
         <license>
             <name>MIT License</name>
             <url>https://opensource.org/licenses/MIT</url>
         </license>
-    </licenses>
+    </licenses>#end
 
-    <!-- If you want this to appear on the wiki page:
+    <!-- If you want this to appear on the plugin site page:
     <developers>
       <developer>
         <id>bhacker</id>
@@ -33,14 +48,14 @@
       </developer>
     </developers> -->
 
-    <!-- Assuming you want to host on @jenkinsci:
-    <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
-    <scm>
+    #if( $hostOnJenkinsGitHub == "true" )<scm>
         <connection>scm:git:git://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
-    </scm>
-    -->
+        <tag>${scmTag}</tag>
+    </scm>#end
+
+
     <repositories>
         <repository>
             <id>repo.jenkins-ci.org</id>
