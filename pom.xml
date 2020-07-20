@@ -28,7 +28,7 @@
         <module>global-configuration</module>
         <module>scripted-pipeline</module>
         <module>global-shared-library</module>
-        <!-- if adding new archetypes please also update .dependabot/config.yml -->
+        <!-- if adding new archetypes please also update .github/dependabot.yml -->
     </modules>
     <!-- These developers currently have write access to release to sonatype OSS -->
     <developers>
