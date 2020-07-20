@@ -1,0 +1,40 @@
+# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  - package-ecosystem: "maven"
+    directory: "/"
+    reviewers:
+      - "jglick"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "maven"
+    directory: "/empty-plugin/src/main/resources/archetype-resources"
+    reviewers:
+      - "jglick"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "maven"
+    directory: "/hello-world/src/main/resources/archetype-resources"
+    reviewers:
+      - "jglick"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "maven"
+    directory: "/global-configuration/src/main/resources/archetype-resources"
+    reviewers:
+      - "jglick"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "maven"
+    directory: "/scripted-pipeline/src/main/resources/archetype-resources"
+    reviewers:
+      - "jglick"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "maven"
+    directory: "/global-shared-library/src/main/resources/archetype-resources"
+    reviewers:
+      - "jglick"
+    schedule:
+      interval: "weekly"
