@@ -33,6 +33,9 @@ TODO review the default [CONTRIBUTING](https://github.com/jenkinsci/.github/blob
 
 Refer to our [contribution guidelines](https://github.com/jenkinsci/.github/blob/master/CONTRIBUTING.md)
 
+#if( $hostOnJenkinsGitHub == "true" )
 $H$H LICENSE
 
 Licensed under MIT, see [LICENSE](LICENSE.md)
+
+#end

@@ -33,16 +33,13 @@
         </dependencies>
     </dependencyManagement>
 
-    <!--
-    The default licence for Jenkins OSS Plugins is MIT. Substitute for the applicable one if needed.
-    Updating LICENSE.md as needed.
-    -->
-    <licenses>
+    #if( $hostOnJenkinsGitHub == "true" )<licenses>
         <license>
             <name>MIT License</name>
             <url>https://opensource.org/licenses/MIT</url>
         </license>
-    </licenses>
+    </licenses>#end
+
 
     #if( $hostOnJenkinsGitHub == "true" )<scm>
         <connection>scm:git:git://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>

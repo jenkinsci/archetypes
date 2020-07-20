@@ -9,6 +9,7 @@ if (properties.get("hostOnJenkinsGitHub") == "false") {
 
     def filesToRemove = [
             'Jenkinsfile',
+            'LICENSE.md'
     ]
     def directoriesToRemove = [
             '.github',
