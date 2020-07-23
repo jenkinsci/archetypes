@@ -13,6 +13,7 @@
         </requiredProperty>
         <requiredProperty key="hostOnJenkinsGitHub">
             <validationRegex>(true|false)</validationRegex>
+            <defaultValue>true</defaultValue>
         </requiredProperty>
     </requiredProperties>
     <fileSets>
