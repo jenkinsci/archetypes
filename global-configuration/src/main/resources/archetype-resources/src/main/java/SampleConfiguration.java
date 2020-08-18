@@ -1,6 +1,7 @@
 package $package;
 
 import hudson.Extension;
+import hudson.ExtensionList;
 import hudson.util.FormValidation;
 import jenkins.model.GlobalConfiguration;
 import org.apache.commons.lang.StringUtils;
@@ -15,7 +16,7 @@ public class SampleConfiguration extends GlobalConfiguration {
 
     /** @return the singleton instance */
     public static SampleConfiguration get() {
-        return GlobalConfiguration.all().get(SampleConfiguration.class);
+        return ExtensionList.lookupSingleton(SampleConfiguration.class);
     }
 
     private String label;
