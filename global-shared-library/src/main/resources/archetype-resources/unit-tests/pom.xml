@@ -79,7 +79,7 @@
                     <dependency>
                         <groupId>org.codehaus.groovy</groupId>
                         <artifactId>groovy-eclipse-batch</artifactId>
-                        <version>3.0.7-01</version>
+                        <version>3.0.7-02</version>
                     </dependency>
                 </dependencies>
             </plugin>
