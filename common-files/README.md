@@ -1,14 +1,6 @@
 #set( $H = '#' )
 $H ${artifactId}
 
-#if( $hostOnJenkinsGitHub == "true" )
-[![Build Status](https://ci.jenkins.io/job/Plugins/job/${artifactId}-plugin/job/master/badge/icon)](https://ci.jenkins.io/job/Plugins/job/${artifactId}-plugin/job/master/)
-[![Contributors](https://img.shields.io/github/contributors/jenkinsci/${artifactId}-plugin.svg)](https://github.com/jenkinsci/${artifactId}-plugin/graphs/contributors)
-[![Jenkins Plugin](https://img.shields.io/jenkins/plugin/v/${artifactId}.svg)](https://plugins.jenkins.io/${artifactId})
-[![GitHub release](https://img.shields.io/github/release/jenkinsci/${artifactId}-plugin.svg?label=changelog)](https://github.com/jenkinsci/${artifactId}-plugin/releases/latest)
-[![Jenkins Plugin Installs](https://img.shields.io/jenkins/plugin/i/${artifactId}.svg?color=blue)](https://plugins.jenkins.io/${artifactId})
-
-#end
 $H$H Introduction
 
 TODO Describe what your plugin does here
