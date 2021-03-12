@@ -14,7 +14,7 @@
     <properties>
         <revision>1.0</revision>
         <changelist>-SNAPSHOT</changelist>
-        <jenkins.version>2.235.1</jenkins.version>
+        <jenkins.version>2.277.1</jenkins.version>
         <java.level>8</java.level>
         #if( $hostOnJenkinsGitHub == "true" )<gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>#end
     </properties>
@@ -26,8 +26,8 @@
         <dependencies>
             <dependency>
                 <groupId>io.jenkins.tools.bom</groupId>
-                <artifactId>bom-2.235.x</artifactId>
-                <version>25</version>
+                <artifactId>bom-2.277.x</artifactId>
+                <version>26</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
