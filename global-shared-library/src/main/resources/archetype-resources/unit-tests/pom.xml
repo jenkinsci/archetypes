@@ -21,7 +21,7 @@
         <groovy.version>2.4.21</groovy.version>
         <junit.version>4.13.2</junit.version>
         <jenkins-pipeline-unit.version>1.1</jenkins-pipeline-unit.version>
-        <groovy-eclipse-compiler.version>3.6.0-03</groovy-eclipse-compiler.version>
+        <groovy-eclipse-compiler.version>3.7.0</groovy-eclipse-compiler.version>
     </properties>
     <dependencies>
         <dependency>
