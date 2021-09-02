@@ -49,6 +49,9 @@
             <resource>
                 <directory>src/main/jenkins</directory>
             </resource>
+            <resource>
+                <directory>../shared-library/src</directory>
+            </resource>
         </resources>
         <testResources>
             <testResource>
