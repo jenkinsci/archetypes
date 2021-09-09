@@ -5,12 +5,12 @@ import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Rule;
-import org.jvnet.hudson.test.RestartableJenkinsRule;
+import org.jvnet.hudson.test.JenkinsSessionRule;
 
 public class SampleConfigurationTest {
 
     @Rule
-    public RestartableJenkinsRule rr = new RestartableJenkinsRule();
+    public JenkinsSessionRule sessions = new JenkinsSessionRule();
 
     /**
      * Tries to exercise enough code paths to catch common mistakes:
@@ -22,8 +22,8 @@ public class SampleConfigurationTest {
      * </ul>
      */
     @Test
-    public void uiAndStorage() {
-        rr.then(r -> {
+    public void uiAndStorage() throws Throwable {
+        sessions.then(r -> {
             assertNull("not set initially", SampleConfiguration.get().getLabel());
             HtmlForm config = r.createWebClient().goTo("configure").getFormByName("config");
             HtmlTextInput textbox = config.getInputByName("_.label");
@@ -31,7 +31,7 @@ public class SampleConfigurationTest {
             r.submit(config);
             assertEquals("global config page let us edit it", "hello", SampleConfiguration.get().getLabel());
         });
-        rr.then(r -> {
+        sessions.then(r -> {
             assertEquals("still there after restart of Jenkins", "hello", SampleConfiguration.get().getLabel());
         });
     }
