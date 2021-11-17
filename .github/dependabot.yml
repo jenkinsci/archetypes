@@ -26,15 +26,3 @@ updates:
       - "jglick"
     schedule:
       interval: "weekly"
-  - package-ecosystem: "maven"
-    directory: "/scripted-pipeline/src/main/resources/archetype-resources"
-    reviewers:
-      - "jglick"
-    schedule:
-      interval: "weekly"
-  - package-ecosystem: "maven"
-    directory: "/global-shared-library/src/main/resources/archetype-resources"
-    reviewers:
-      - "jglick"
-    schedule:
-      interval: "weekly"
