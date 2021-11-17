@@ -34,27 +34,9 @@ If you have defined a mirror like this in your `settings.xml` you might _not_ be
 
 # Changes
 
-| WARNING: Changelogs have been moved to [GitHub Releases](https://github.com/jenkinsci/archetypes/releases) |
-| --- |
+See [GitHub Releases](https://github.com/jenkinsci/archetypes/releases) for changes.
 
-## Newer versions
-
-See [GitHub Releases](https://github.com/jenkinsci/archetypes/releases)
-
-## 1.4 (2018 Mar 12)
-
-* Added `JenkinsPipelineUnit` archetypes.
-
-## 1.3 (2018 Feb 09)
-
-* Changed default package name to use `io.jenkins.` prefix.
-* Sundry POM updates.
-
-## 1.2 (2017 Oct 12)
-
-* Added sample of `GlobalConfiguration`.
-* Empty plugin archetype includes a test root.
-* Sample `.gitignore` files included for the convenience of people using Git.
+For older versions, see the [archive](https://github.com/jenkinsci/archetypes/blob/314ac1a0b753179a63fe8422ee4d2fae024a7df5/README.md#14-2018-mar-12).
 
 # Development
 
@@ -87,11 +69,5 @@ curl -s http://repo1.maven.org/maven2/archetype-catalog.xml | xmlstarlet sel -R 
 If testing their appearance, be sure to use a clean environment:
 
 ```sh
-docker run -ti --rm --name mvn --entrypoint /bin/bash maven:3.5.0-jdk-8
+docker run -ti --rm --name mvn --entrypoint /bin/bash maven:3.8.3-jdk-8
 ```
-
-# TODO
-
-* `HelloWorldBuilderTest` should use `BuildWatcher`
-* convert `ui-samples-plugin` to an archetype
-* add `Step` sample as per [this example](https://github.com/jglick/wfdev/blob/pipeline/src/main/java/demo/CountGreetingsStep.java)
