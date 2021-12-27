@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
@@ -12,22 +13,6 @@
     <packaging>pom</packaging>
     <name>Jenkins Archetypes</name>
     <description>Maven archetypes of useful things you may want to create in the Jenkins project.</description>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <archetype.version>3.2.0</archetype.version>
-    </properties>
-    <scm child.scm.connection.inherit.append.path="false" child.scm.developerConnection.inherit.append.path="false" child.scm.url.inherit.append.path="false">
-        <connection>scm:git:git@github.com/jenkinsci/archetypes.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/jenkinsci/archetypes.git</developerConnection>
-        <url>https://github.com/jenkinsci/archetypes/</url>
-        <tag>HEAD</tag>
-    </scm>
-    <modules>
-        <module>empty-plugin</module>
-        <module>hello-world</module>
-        <module>global-configuration</module>
-        <!-- if adding new archetypes please also update .github/dependabot.yml -->
-    </modules>
     <!-- These developers currently have write access to release to sonatype OSS -->
     <developers>
         <developer>
@@ -58,14 +43,23 @@
             </roles>
         </developer>
     </developers>
+    <modules>
+        <module>empty-plugin</module>
+        <module>hello-world</module>
+        <module>global-configuration</module>
+        <!-- if adding new archetypes please also update .github/dependabot.yml -->
+    </modules>
+    <scm child.scm.connection.inherit.append.path="false" child.scm.developerConnection.inherit.append.path="false" child.scm.url.inherit.append.path="false">
+        <connection>scm:git:git@github.com/jenkinsci/archetypes.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/jenkinsci/archetypes.git</developerConnection>
+        <tag>HEAD</tag>
+        <url>https://github.com/jenkinsci/archetypes/</url>
+    </scm>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <archetype.version>3.2.0</archetype.version>
+    </properties>
     <build>
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.archetype</groupId>
-                <artifactId>archetype-packaging</artifactId>
-                <version>${archetype.version}</version>
-            </extension>
-        </extensions>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -111,9 +105,17 @@
                 </configuration>
             </plugin>
         </plugins>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.archetype</groupId>
+                <artifactId>archetype-packaging</artifactId>
+                <version>${archetype.version}</version>
+            </extension>
+        </extensions>
     </build>
     <profiles>
-        <profile> <!-- integration tests are a bit slow, no need to run them twice per release -->
+        <profile>
+            <!-- integration tests are a bit slow, no need to run them twice per release -->
             <id>skip-tests-on-release</id>
             <activation>
                 <property>

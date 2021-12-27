@@ -6,8 +6,8 @@
         <artifactId>archetypes-parent</artifactId>
         <version>1.12-SNAPSHOT</version>
     </parent>
-    <packaging>maven-archetype</packaging>
     <artifactId>global-configuration-plugin</artifactId>
+    <packaging>maven-archetype</packaging>
     <name>Global Configuration Jenkins Plugin</name>
     <description>Skeleton of a Jenkins plugin with a POM and an example piece of global configuration.</description>
 
@@ -18,10 +18,10 @@
                 <executions>
                     <execution>
                         <id>copy-common-files</id>
-                        <phase>process-sources</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
+                        <phase>process-sources</phase>
                         <configuration>
                             <outputDirectory>${project.build.directory}/classes/archetype-resources</outputDirectory>
                             <resources>
@@ -36,10 +36,10 @@
                     </execution>
                     <execution>
                         <id>copy-post-generate</id>
-                        <phase>process-sources</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
+                        <phase>process-sources</phase>
                         <configuration>
                             <outputDirectory>${project.build.directory}/classes/META-INF</outputDirectory>
                             <resources>
