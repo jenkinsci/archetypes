@@ -1,3 +1,4 @@
+import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
 
@@ -21,5 +22,11 @@ if (properties.get("hostOnJenkinsGitHub") == "false") {
         new File(it, projectPath.toFile()).deleteDir()
     }
 }
+
+// Adding gitignore file via maven-resources-plugin is broken
+// see https://issues.apache.org/jira/browse/ARCHETYPE-505?focusedCommentId=17277974&page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#comment-17277974
+Path gitIgnorePath = projectPath.resolve("gitignore");
+Path targetPath = gitIgnorePath.getParent().resolve(".gitignore");
+Files.move(gitIgnorePath, targetPath)
 
 println properties
