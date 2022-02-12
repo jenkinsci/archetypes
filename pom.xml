@@ -50,7 +50,7 @@
         <!-- if adding new archetypes please also update .github/dependabot.yml -->
     </modules>
     <scm child.scm.connection.inherit.append.path="false" child.scm.developerConnection.inherit.append.path="false" child.scm.url.inherit.append.path="false">
-        <connection>scm:git:git@github.com/jenkinsci/archetypes.git</connection>
+        <connection>scm:git:https://github.com/jenkinsci/archetypes.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/jenkinsci/archetypes.git</developerConnection>
         <tag>HEAD</tag>
         <url>https://github.com/jenkinsci/archetypes/</url>
