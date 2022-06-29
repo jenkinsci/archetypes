@@ -51,7 +51,7 @@
                 <!-- Pick up common dependencies for the selected LTS line: https://github.com/jenkinsci/bom#usage -->
                 <groupId>io.jenkins.tools.bom</groupId>
                 <artifactId>bom-2.332.x</artifactId>
-                <version>1451.v15f1fdb_772a_f</version>
+                <version>1461.vb_3c6de28f2b_a_</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
