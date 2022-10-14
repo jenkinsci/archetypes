@@ -21,15 +21,6 @@
         </license>
     </licenses>#end
 
-    <!-- If you want this to appear on the plugin site page:
-    <developers>
-        <developer>
-            <id>bhacker</id>
-            <name>Bob Q. Hacker</name>
-            <email>bhacker@nowhere.net</email>
-        </developer>
-    </developers> -->
-
     #if( $hostOnJenkinsGitHub == "true" )<scm child.scm.connection.inherit.append.path="false" child.scm.developerConnection.inherit.append.path="false" child.scm.url.inherit.append.path="false">
         <connection>scm:git:https://github.com/${gitHubRepo}</connection>
         <developerConnection>scm:git:https://github.com/${gitHubRepo}</developerConnection>
