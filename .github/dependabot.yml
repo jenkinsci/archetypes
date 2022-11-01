@@ -30,3 +30,15 @@ updates:
       - "jglick"
     schedule:
       interval: "weekly"
+  - package-ecosystem: "github-actions"
+    directory: "/common-files"
+    reviewers:
+      - "jglick"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "maven"
+    directory: "/common-files"
+    reviewers:
+      - "jglick"
+    schedule:
+      interval: "weekly"
