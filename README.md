@@ -59,7 +59,7 @@ mvn -B release:{prepare,perform}
 
 In addition to needing write permission to this repository, you must have been preauthorized to deploy to the `io/jenkins/archetypes/` sector of OSSRH.
 
-Artifacts will [appear on Maven Central](http://repo1.maven.org/maven2/io/jenkins/archetypes/) after a few minutes.
+Artifacts will [appear on Maven Central](https://repo1.maven.org/maven2/io/jenkins/archetypes/) after a few minutes.
 But as noted in OSSRH-34275, the catalog only gets regenerated weekly; to check it:
 
 ```sh
