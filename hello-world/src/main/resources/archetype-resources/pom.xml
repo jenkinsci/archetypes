@@ -32,7 +32,7 @@
         <changelist>-SNAPSHOT</changelist>
 
         <!-- https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/ -->
-        <jenkins.version>2.332.4</jenkins.version>
+        <jenkins.version>2.361.4</jenkins.version>
         #if( $hostOnJenkinsGitHub == "true" )<gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>#end
     </properties>
 
@@ -41,7 +41,7 @@
             <dependency>
                 <!-- Pick up common dependencies for the selected LTS line: https://github.com/jenkinsci/bom#usage -->
                 <groupId>io.jenkins.tools.bom</groupId>
-                <artifactId>bom-2.332.x</artifactId>
+                <artifactId>bom-2.361.x</artifactId>
                 <version>1723.vcb_9fee52c9fc</version>
                 <type>pom</type>
                 <scope>import</scope>
