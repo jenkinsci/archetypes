@@ -31,7 +31,7 @@ updates:
     schedule:
       interval: "weekly"
   - package-ecosystem: "github-actions"
-    directory: "/common-files"
+    directory: "/common-files/.github/workflows"
     reviewers:
       - "jglick"
     schedule:
