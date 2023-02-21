@@ -27,12 +27,14 @@
         <tag>${scmTag}</tag>
         <url>https://github.com/${gitHubRepo}</url>
     </scm>#end
+
     <properties>
         <revision>1.0</revision>
         <changelist>-SNAPSHOT</changelist>
         <!-- https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/ -->
         <jenkins.version>2.361.4</jenkins.version>
         #if( $hostOnJenkinsGitHub == "true" )<gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>#end
+
     </properties>
 
     <dependencyManagement>
