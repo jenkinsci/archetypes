@@ -47,7 +47,7 @@
         <module>empty-plugin</module>
         <module>hello-world</module>
         <module>global-configuration</module>
-        <!-- if adding new archetypes please also update .github/dependabot.yml -->
+        <!-- if adding new archetypes please also update .github/renovate.json -->
     </modules>
     <scm child.scm.connection.inherit.append.path="false" child.scm.developerConnection.inherit.append.path="false" child.scm.url.inherit.append.path="false">
         <connection>scm:git:git@github.com/jenkinsci/archetypes.git</connection>
