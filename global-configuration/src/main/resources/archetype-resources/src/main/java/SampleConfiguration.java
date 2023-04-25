@@ -47,5 +47,4 @@ public class SampleConfiguration extends GlobalConfiguration {
         }
         return FormValidation.ok();
     }
-
 }

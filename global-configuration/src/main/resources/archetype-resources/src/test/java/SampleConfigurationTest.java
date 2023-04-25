@@ -1,10 +1,11 @@
 package $package;
 
+import static org.junit.Assert.*;
+
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
-import org.junit.Test;
-import static org.junit.Assert.*;
 import org.junit.Rule;
+import org.junit.Test;
 import org.jvnet.hudson.test.JenkinsSessionRule;
 
 public class SampleConfigurationTest {
@@ -29,11 +30,16 @@ public class SampleConfigurationTest {
             HtmlTextInput textbox = config.getInputByName("_.label");
             textbox.setText("hello");
             r.submit(config);
-            assertEquals("global config page let us edit it", "hello", SampleConfiguration.get().getLabel());
+            assertEquals(
+                    "global config page let us edit it",
+                    "hello",
+                    SampleConfiguration.get().getLabel());
         });
         sessions.then(r -> {
-            assertEquals("still there after restart of Jenkins", "hello", SampleConfiguration.get().getLabel());
+            assertEquals(
+                    "still there after restart of Jenkins",
+                    "hello",
+                    SampleConfiguration.get().getLabel());
         });
     }
-
 }
