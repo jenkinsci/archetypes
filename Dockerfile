@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.1.1-experimental
-FROM maven:3.9.2
+FROM maven:3.9.3
 COPY . /src
 WORKDIR /src
 RUN rm -rf .git
