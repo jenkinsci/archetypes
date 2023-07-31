@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.kohsuke</groupId>
-        <artifactId>pom</artifactId>
-        <version>21</version>
-        <relativePath />
-    </parent>
+
     <groupId>io.jenkins.archetypes</groupId>
     <artifactId>archetypes-parent</artifactId>
     <version>1.21-SNAPSHOT</version>
     <packaging>pom</packaging>
+
     <name>Jenkins Archetypes</name>
     <description>Maven archetypes of useful things you may want to create in the Jenkins project.</description>
+    <url>https://github.com/jenkinsci/archetypes</url>
     <licenses>
         <license>
-            <name>The MIT License</name>
+            <name>MIT license</name>
             <url>https://opensource.org/license/mit/</url>
+            <distribution>repo</distribution>
         </license>
     </licenses>
-    <!-- These developers currently have write access to release to sonatype OSS -->
+
     <developers>
         <developer>
             <id>jglick</id>
@@ -48,12 +46,23 @@
                 <role>maintainer</role>
             </roles>
         </developer>
+        <developer>
+            <id>notmyfault</id>
+            <name>Alexander Brandes</name>
+            <email>contact(at)notmyfault.dev</email>
+            <roles>
+                <role>release</role>
+                <role>maintainer</role>
+            </roles>
+        </developer>
     </developers>
+
     <modules>
         <module>empty-plugin</module>
         <module>hello-world</module>
         <module>global-configuration</module>
     </modules>
+
     <scm child.scm.connection.inherit.append.path="false" child.scm.developerConnection.inherit.append.path="false" child.scm.url.inherit.append.path="false">
         <connection>scm:git:git@github.com/jenkinsci/archetypes.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/jenkinsci/archetypes.git</developerConnection>
@@ -62,85 +71,62 @@
     </scm>
     <distributionManagement>
         <snapshotRepository>
-            <id>ossrh</id>
+            <id>sonatype-nexus-snapshots</id>
+            <name>Sonatype Nexus Snapshots</name>
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
         </snapshotRepository>
         <repository>
-            <id>ossrh</id>
+            <id>sonatype-nexus-staging</id>
+            <name>Nexus Release Repository</name>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <archetype.version>3.2.1</archetype.version>
     </properties>
+
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.5.0</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.sonatype.plugins</groupId>
-                    <artifactId>nexus-staging-maven-plugin</artifactId>
-                    <version>1.6.13</version>
-                    <extensions>true</extensions>
-                    <configuration>
-                        <serverId>ossrh</serverId>
-                        <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                        <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-archetype-plugin</artifactId>
-                    <version>${archetype.version}</version>
-                    <configuration>
-                        <skip>${skipTests}</skip>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>3.0.1</version>
-                    <configuration>
-                        <tagNameFormat>archetypes-@{project.version}</tagNameFormat>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <version>3.3.1</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-gpg-plugin</artifactId>
-                    <version>3.1.0</version>
-                    <executions>
-                        <execution>
-                            <id>sign-artifacts</id>
-                            <phase>verify</phase>
-                            <goals>
-                                <goal>sign</goal>
-                            </goals>
-                            <configuration>
-                                <keyname>${gpg.keyname}</keyname>
-                                <passphraseServerId>${gpg.keyname}</passphraseServerId>
-                                <gpgArguments>
-                                    <arg>--pinentry-mode</arg>
-                                    <arg>loopback</arg>
-                                </gpgArguments>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-            </plugins>
-        </pluginManagement>
         <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <release>11</release>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.13</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>sonatype-nexus-staging</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-archetype-plugin</artifactId>
+                <version>${archetype.version}</version>
+                <configuration>
+                    <skip>${skipTests}</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>3.0.1</version>
+                <configuration>
+                    <releaseProfiles>release</releaseProfiles>
+                    <tagNameFormat>archetypes-@{project.version}</tagNameFormat>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.1</version>
                 <configuration>
                     <addDefaultExcludes>false</addDefaultExcludes>
                 </configuration>
@@ -154,7 +140,64 @@
             </extension>
         </extensions>
     </build>
+
     <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <configuration>
+                                    <gpgArguments>
+                                        <arg>--pinentry-mode</arg>
+                                        <arg>loopback</arg>
+                                    </gpgArguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.3.0</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>3.5.0</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <doclint>syntax,reference,html</doclint>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
         <profile>
             <!-- integration tests are a bit slow, no need to run them twice per release -->
             <id>skip-tests-on-release</id>
