@@ -9,7 +9,7 @@
     </parent>
     <groupId>io.jenkins.archetypes</groupId>
     <artifactId>archetypes-parent</artifactId>
-    <version>1.20-SNAPSHOT</version>
+    <version>1.21-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Jenkins Archetypes</name>
     <description>Maven archetypes of useful things you may want to create in the Jenkins project.</description>
