@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.kohsuke</groupId>
-        <artifactId>pom</artifactId>
-        <version>21</version>
+        <groupId>io.jenkins.tools</groupId>
+        <artifactId>central-repository-pom</artifactId>
+        <version>1.0</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.archetypes</groupId>
@@ -42,6 +42,15 @@
                 <role>maintainer</role>
             </roles>
         </developer>
+        <developer>
+            <id>NotMyFault</id>
+            <name>Alexander Brandes</name>
+            <email>contact(at)notmyfault.dev</email>
+            <roles>
+                <role>release</role>
+                <role>maintainer</role>
+            </roles>
+        </developer>
     </developers>
     <modules>
         <module>empty-plugin</module>
@@ -61,18 +70,6 @@
     <build>
         <pluginManagement>
             <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.5.0</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.sonatype.plugins</groupId>
-                    <artifactId>nexus-staging-maven-plugin</artifactId>
-                    <configuration>
-                        <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                    </configuration>
-                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-archetype-plugin</artifactId>
