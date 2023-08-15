@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.jenkins.tools</groupId>
         <artifactId>central-repository-pom</artifactId>
-        <version>1.0</version>
+        <version>1.1</version>
         <relativePath />
     </parent>
     <groupId>io.jenkins.archetypes</groupId>
@@ -64,7 +64,6 @@
         <url>https://github.com/jenkinsci/archetypes/</url>
     </scm>
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <archetype.version>3.2.1</archetype.version>
     </properties>
     <build>
@@ -80,15 +79,9 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-release-plugin</artifactId>
-                    <version>3.0.1</version>
                     <configuration>
                         <tagNameFormat>archetypes-@{project.version}</tagNameFormat>
                     </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <version>3.3.1</version>
                 </plugin>
             </plugins>
         </pluginManagement>
