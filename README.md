@@ -4,7 +4,7 @@ Maven archetypes to help you create new components involving Jenkins, such as pl
 
 [![GitHub release](https://img.shields.io/github/release/jenkinsci/archetypes.svg?label=release)](https://github.com/jenkinsci/archetypes/releases/latest)
 
-# Usage
+## Usage
 
 To see all currently released archetypes and pick one to instantiate:
 
@@ -24,21 +24,22 @@ This has been deprecated in favor of the new archetypes, which cover more scenar
 The NetBeans IDE also offers a [plugin for Jenkins development](https://github.com/stapler/netbeans-stapler-plugin/blob/master/README.md) which offers a Jenkins plugin archetype via the **File » New Project** wizard.
 
 If you have defined a mirror like this in your `settings.xml` you might _not_ be able to use filter option as described above.
+
 ```xml
  <mirror>
    <id>repo.jenkins-ci.org-all</id>
    <url>https://repo.jenkins-ci.org/public</url>
-   <mirrorOf>*</mirrorOf>
+   <mirrorOf>*,!central</mirrorOf>
 </mirror>
 ```
 
-# Changes
+## Changes
 
 See [GitHub Releases](https://github.com/jenkinsci/archetypes/releases) for changes.
 
 For older versions, see the [archive](https://github.com/jenkinsci/archetypes/blob/314ac1a0b753179a63fe8422ee4d2fae024a7df5/README.md#14-2018-mar-12).
 
-# Development
+## Development
 
 To create a new archetype, file a pull request creating a new `module`, following the examples currently here. Important pieces:
 
