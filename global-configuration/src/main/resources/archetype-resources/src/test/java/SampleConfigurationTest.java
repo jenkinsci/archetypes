@@ -1,17 +1,16 @@
-package $package;
+package io.jenkins.plugins.sample;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.htmlunit.html.HtmlForm;
 import org.htmlunit.html.HtmlTextInput;
-import org.junit.Rule;
-import org.junit.Test;
-import org.jvnet.hudson.test.JenkinsSessionRule;
+import org.junit.jupiter.api.Test;
+import org.junit.runners.model.Statement;
+import org.jvnet.hudson.test.JenkinsRule;
+import org.jvnet.hudson.test.junit.jupiter.WithJenkins;
 
-public class SampleConfigurationTest {
-
-    @Rule
-    public JenkinsSessionRule sessions = new JenkinsSessionRule();
+@WithJenkins
+class SampleConfigurationTest {
 
     /**
      * Tries to exercise enough code paths to catch common mistakes:
@@ -23,23 +22,31 @@ public class SampleConfigurationTest {
      * </ul>
      */
     @Test
-    public void uiAndStorage() throws Throwable {
-        sessions.then(r -> {
-            assertNull("not set initially", SampleConfiguration.get().getLabel());
-            HtmlForm config = r.createWebClient().goTo("configure").getFormByName("config");
-            HtmlTextInput textbox = config.getInputByName("_.label");
-            textbox.setText("hello");
-            r.submit(config);
-            assertEquals(
-                    "global config page let us edit it",
-                    "hello",
-                    SampleConfiguration.get().getLabel());
-        });
-        sessions.then(r -> {
-            assertEquals(
-                    "still there after restart of Jenkins",
-                    "hello",
-                    SampleConfiguration.get().getLabel());
-        });
+    void uiAndStorage(JenkinsRule jenkins) throws Throwable {
+        jenkins.apply(
+                new Statement() {
+                    @Override
+                    public void evaluate() throws Throwable {
+                        assertNull(SampleConfiguration.get().getLabel(), "not set initially");
+                        HtmlForm config =
+                                jenkins.createWebClient().goTo("configure").getFormByName("config");
+                        HtmlTextInput textbox = config.getInputByName("_.label");
+                        textbox.setText("hello");
+                        jenkins.submit(config);
+                        assertEquals(
+                                "hello", SampleConfiguration.get().getLabel(), "global config page let us edit it");
+                    }
+                },
+                jenkins.getTestDescription());
+
+        jenkins.apply(
+                new Statement() {
+                    @Override
+                    public void evaluate() throws Throwable {
+                        assertEquals(
+                                "hello", SampleConfiguration.get().getLabel(), "still there after restart of Jenkins");
+                    }
+                },
+                jenkins.getTestDescription());
     }
 }
