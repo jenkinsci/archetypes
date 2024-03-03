@@ -11,7 +11,7 @@
 
     <groupId>io.jenkins.archetypes</groupId>
     <artifactId>archetypes-parent</artifactId>
-    <version>1.24</version>
+    <version>1.25-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Jenkins Archetypes</name>
@@ -66,7 +66,7 @@
     <scm child.scm.connection.inherit.append.path="false" child.scm.developerConnection.inherit.append.path="false" child.scm.url.inherit.append.path="false">
         <connection>scm:git:git@github.com/jenkinsci/archetypes.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/jenkinsci/archetypes.git</developerConnection>
-        <tag>archetypes-1.24</tag>
+        <tag>HEAD</tag>
         <url>https://github.com/jenkinsci/archetypes/</url>
     </scm>
 
