@@ -16,10 +16,10 @@ if (properties.get("hostOnJenkinsGitHub") == "false") {
             '.github',
     ]
     filesToRemove.each {
-        new File(it, projectPath.toFile()).delete()
+        projectPath.resolve(it).toFile().delete()
     }
     directoriesToRemove.each {
-        new File(it, projectPath.toFile()).deleteDir()
+        projectPath.resolve(it).toFile().deleteDir()
     }
 }
 
