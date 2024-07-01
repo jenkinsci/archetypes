@@ -6,19 +6,17 @@ import hudson.model.Label;
 import org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition;
 import org.jenkinsci.plugins.workflow.job.WorkflowJob;
 import org.jenkinsci.plugins.workflow.job.WorkflowRun;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.jvnet.hudson.test.JenkinsRule;
+import org.jvnet.hudson.test.junit.jupiter.WithJenkins;
 
-public class HelloWorldBuilderTest {
-
-    @Rule
-    public JenkinsRule jenkins = new JenkinsRule();
+@WithJenkins
+class HelloWorldBuilderTest {
 
     final String name = "Bobby";
 
     @Test
-    public void testConfigRoundtrip() throws Exception {
+    void testConfigRoundtrip(JenkinsRule jenkins) throws Exception {
         FreeStyleProject project = jenkins.createFreeStyleProject();
         project.getBuildersList().add(new HelloWorldBuilder(name));
         project = jenkins.configRoundtrip(project);
@@ -27,7 +25,7 @@ public class HelloWorldBuilderTest {
     }
 
     @Test
-    public void testConfigRoundtripFrench() throws Exception {
+    void testConfigRoundtripFrench(JenkinsRule jenkins) throws Exception {
         FreeStyleProject project = jenkins.createFreeStyleProject();
         HelloWorldBuilder builder = new HelloWorldBuilder(name);
         builder.setUseFrench(true);
@@ -40,7 +38,7 @@ public class HelloWorldBuilderTest {
     }
 
     @Test
-    public void testBuild() throws Exception {
+    void testBuild(JenkinsRule jenkins) throws Exception {
         FreeStyleProject project = jenkins.createFreeStyleProject();
         HelloWorldBuilder builder = new HelloWorldBuilder(name);
         project.getBuildersList().add(builder);
@@ -50,8 +48,7 @@ public class HelloWorldBuilderTest {
     }
 
     @Test
-    public void testBuildFrench() throws Exception {
-
+    void testBuildFrench(JenkinsRule jenkins) throws Exception {
         FreeStyleProject project = jenkins.createFreeStyleProject();
         HelloWorldBuilder builder = new HelloWorldBuilder(name);
         builder.setUseFrench(true);
@@ -62,7 +59,7 @@ public class HelloWorldBuilderTest {
     }
 
     @Test
-    public void testScriptedPipeline() throws Exception {
+    void testScriptedPipeline(JenkinsRule jenkins) throws Exception {
         String agentLabel = "my-agent";
         jenkins.createOnlineSlave(Label.get(agentLabel));
         WorkflowJob job = jenkins.createProject(WorkflowJob.class, "test-scripted-pipeline");
