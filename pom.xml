@@ -71,7 +71,7 @@
     </scm>
 
     <properties>
-        <archetype.version>3.2.1</archetype.version>
+        <archetype.version>3.3.0</archetype.version>
     </properties>
 
     <build>
