@@ -12,5 +12,13 @@
   "labels": [
     "dependencies"
   ],
+  "packageRules": [
+    {
+      "matchDepNames": [
+        "org.jenkins-ci.plugins:plugin"
+      ],
+      "allowedVersions": "< 5"
+    }
+  ],
   "rebaseWhen": "conflicted"
 }
