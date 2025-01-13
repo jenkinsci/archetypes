@@ -1,17 +1,15 @@
 package $package;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.htmlunit.html.HtmlForm;
 import org.htmlunit.html.HtmlTextInput;
-import org.junit.Rule;
-import org.junit.Test;
-import org.jvnet.hudson.test.JenkinsSessionRule;
+import org.junit.jupiter.api.Test;
+import org.jvnet.hudson.test.JenkinsRule;
+import org.jvnet.hudson.test.junit.jupiter.WithJenkins;
 
-public class SampleConfigurationTest {
-
-    @Rule
-    public JenkinsSessionRule sessions = new JenkinsSessionRule();
+@WithJenkins
+class SampleConfigurationTest {
 
     /**
      * Tries to exercise enough code paths to catch common mistakes:
@@ -23,23 +21,18 @@ public class SampleConfigurationTest {
      * </ul>
      */
     @Test
-    public void uiAndStorage() throws Throwable {
-        sessions.then(r -> {
-            assertNull("not set initially", SampleConfiguration.get().getLabel());
-            HtmlForm config = r.createWebClient().goTo("configure").getFormByName("config");
+    void uiAndStorage(JenkinsRule jenkins) throws Throwable {
+        assertNull(SampleConfiguration.get().getLabel(), "not set initially");
+        try (JenkinsRule.WebClient client = jenkins.createWebClient()) {
+            HtmlForm config = client.goTo("configure").getFormByName("config");
             HtmlTextInput textbox = config.getInputByName("_.label");
             textbox.setText("hello");
-            r.submit(config);
-            assertEquals(
-                    "global config page let us edit it",
-                    "hello",
-                    SampleConfiguration.get().getLabel());
-        });
-        sessions.then(r -> {
-            assertEquals(
-                    "still there after restart of Jenkins",
-                    "hello",
-                    SampleConfiguration.get().getLabel());
-        });
+            jenkins.submit(config);
+            assertEquals("hello", SampleConfiguration.get().getLabel(), "global config page let us edit it");
+        }
+
+        jenkins.restart();
+
+        assertEquals("hello", SampleConfiguration.get().getLabel(), "still there after restart of Jenkins");
     }
 }
