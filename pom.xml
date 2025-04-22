@@ -20,7 +20,7 @@
     <!-- These developers currently have write access to release to sonatype OSS -->
     <developers>
         <developer>
-            <id>jglick</id>
+            <id>jglick2</id>
             <name>Jesse Glick</name>
             <email>jglick@cloudbees.com</email>
             <roles>
@@ -38,9 +38,17 @@
             </roles>
         </developer>
         <developer>
-            <id>NotMyFault</id>
+            <id>notmyfault</id>
             <name>Alexander Brandes</name>
             <email>contact(at)notmyfault.dev</email>
+            <roles>
+                <role>release</role>
+                <role>maintainer</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>basilcrow</id>
+            <name>Basil Crow</name>
             <roles>
                 <role>release</role>
                 <role>maintainer</role>
