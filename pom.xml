@@ -38,15 +38,6 @@
             </roles>
         </developer>
         <developer>
-            <id>christ66</id>
-            <name>Steven Christou</name>
-            <email>schristou88@gmail.com</email>
-            <roles>
-                <role>release</role>
-                <role>maintainer</role>
-            </roles>
-        </developer>
-        <developer>
             <id>NotMyFault</id>
             <name>Alexander Brandes</name>
             <email>contact(at)notmyfault.dev</email>
