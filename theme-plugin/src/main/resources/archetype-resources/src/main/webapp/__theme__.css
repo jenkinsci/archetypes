@@ -55,7 +55,7 @@
     --prefers-contrast: var(--text-color);
   }
 
-  /* This should be removed when core usees '--card-border-color' for tabs */
+  /* This should be removed when core uses '--card-border-color' for tabs */
   .tabBar {
     &::before {
       border: var(--jenkins-border-width) solid var(--card-border-color);
