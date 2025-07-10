@@ -62,7 +62,7 @@
     }
   }
 
-  /* This should be removed when core usees '--card-border-color' for tables */
+  /* This should be removed when core uses '--card-border-color' for tables */
   .jenkins-table {
     @supports (not (-moz-appearance: none)) {
       &::before {
