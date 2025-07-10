@@ -1,0 +1,128 @@
+[data-theme=${theme}], .app-theme-picker__picker[data-theme=${theme}] {
+  /* TODO: Change these colors to match your theme */
+  --background: white;
+  --accent-color: grey;
+
+  /* Text */
+  /* TODO: Change this color to match your theme */
+  --text-color: black;
+  --text-color-secondary: color-mix(in oklch, color-mix(in srgb, var(--background) 40%, var(--text-color)), var(--accent-color) 25%);
+
+  /* Breadcrumbs - Deprecated */
+  --breadcrumbs-bar-background: var(--background);
+
+  /* Tabs - Deprecated */
+  --tabs-background: var(--card-border-color);
+  --tabs-item-background--selected: oklch(
+      from var(--text-color-secondary) l c h / 0.175
+  );
+
+  /* Table */
+  --table-background: color-mix(in srgb, var(--background) 95%, var(--text-color-secondary));
+
+  /* Side panel */
+  --panel-border-color: color-mix(in srgb, var(--text-color-secondary) 15%, var(--card-background));
+
+  /* Form */
+  --input-color: color-mix(in srgb, var(--text-color-secondary) 3%, var(--background));
+  --input-border: color-mix(in srgb, var(--text-color-secondary) 30%, var(--background));
+  --input-border-hover: color-mix(in srgb, var(--text-color-secondary) 40%, var(--background));
+
+  /* Default button */
+  --button-background: oklch(from var(--text-color-secondary) l c h / 0.075);
+  --button-background--hover: oklch(
+      from var(--text-color-secondary) l c h / 0.125
+  );
+  --button-background--active: oklch(
+      from var(--text-color-secondary) l c h / 0.175
+  );
+  --button-box-shadow--focus: oklch(
+      from var(--text-color-secondary) l c h / 0.1
+  );
+
+  /* Variables for sidebar items, card items */
+  --item-background--hover: oklch(from var(--text-color-secondary) l c h / 0.1);
+  --item-background--active: oklch(
+      from var(--text-color-secondary) l c h / 0.15
+  );
+  --item-box-shadow--focus: oklch(from var(--text-color-secondary) l c h / 0.1);
+
+  /* Card */
+  --card-background: color-mix(in srgb, var(--background) 95%, var(--text-color-secondary));
+  --card-border-color: var(--prefers-contrast, color-mix(in srgb, var(--text-color-secondary) 10%, var(--card-background)));
+
+  @media (prefers-contrast: more) {
+    --prefers-contrast: var(--text-color);
+  }
+
+  /* This should be removed when core usees '--card-border-color' for tabs */
+  .tabBar {
+    &::before {
+      border: var(--jenkins-border-width) solid var(--card-border-color);
+    }
+  }
+
+  /* This should be removed when core usees '--card-border-color' for tables */
+  .jenkins-table {
+    @supports (not (-moz-appearance: none)) {
+      &::before {
+        border: var(--jenkins-border-width) solid var(--card-border-color);
+      }
+    }
+  }
+
+  /* Colors */
+  /* Base palette to match background and accent-color theme */
+  /* TODO: Change these colors to match your theme */
+  --blue: blue;
+  --brown: brown;
+  --cyan: cyan;
+  --green: green;
+  --indigo: indigo;
+  --orange: orange;
+  --pink: pink;
+  --purple: purple;
+  --red: red;
+  --yellow: yellow;
+
+  /* Derived variants (light/dark) */
+  --light-blue: oklch(from var(--blue) calc(l + 0.2) c h);
+  --dark-blue: oklch(from var(--blue) calc(l - 0.2) c h);
+  --light-brown: oklch(from var(--brown) calc(l + 0.2) c h);
+  --dark-brown: oklch(from var(--brown) calc(l - 0.2) c h);
+  --light-cyan: oklch(from var(--cyan) calc(l + 0.2) c h);
+  --dark-cyan: oklch(from var(--cyan) calc(l - 0.2) c h);
+  --light-green: oklch(from var(--green) calc(l + 0.2) c h);
+  --dark-green: oklch(from var(--green) calc(l - 0.2) c h);
+  --light-indigo: oklch(from var(--indigo) calc(l + 0.2) c h);
+  --dark-indigo: oklch(from var(--indigo) calc(l - 0.2) c h);
+  --light-orange: oklch(from var(--orange) calc(l + 0.2) c h);
+  --dark-orange: oklch(from var(--orange) calc(l - 0.2) c h);
+  --light-pink: oklch(from var(--pink) calc(l + 0.2) c h);
+  --dark-pink: oklch(from var(--pink) calc(l - 0.2) c h);
+  --light-purple: oklch(from var(--purple) calc(l + 0.2) c h);
+  --dark-purple: oklch(from var(--purple) calc(l - 0.2) c h);
+  --light-red: oklch(from var(--red) calc(l + 0.2) c h);
+  --dark-red: oklch(from var(--red) calc(l - 0.2) c h);
+  --light-yellow: oklch(from var(--yellow) calc(l + 0.2) c h);
+  --dark-yellow: oklch(from var(--yellow) calc(l - 0.2) c h);
+
+  /* Tooltips */
+  --tooltip-box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.025),
+      inset var(--jenkins-border--subtle-shadow),
+      0 0 8px 2px rgba(0, 0, 20, 0.05),
+      0 0 1px 1px rgba(0, 0, 20, 0.025),
+      0 10px 20px rgba(0, 0, 20, 0.2);
+
+  /* Dropdowns */
+  --dropdown-box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.025),
+      inset var(--jenkins-border--subtle-shadow),
+      0 0 8px 2px rgba(0, 0, 20, 0.05),
+      0 0 1px 1px rgba(0, 0, 20, 0.025),
+      0 10px 20px rgba(0, 0, 20, 0.3);
+
+  /* Render native browser elements in ${themeMode} mode */
+  color-scheme: ${themeMode};
+}

@@ -1,0 +1,61 @@
+<archetype-descriptor
+  xmlns="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.2.0 https://maven.apache.org/xsd/archetype-descriptor-1.2.0.xsd"
+  name="${artifactId}">
+  <requiredProperties>
+    <requiredProperty key="groupId">
+      <defaultValue>io.jenkins.plugins</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="artifactId">
+      <defaultValue>${theme}-theme</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="version">
+      <defaultValue>999999-SNAPSHOT</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="package">
+      <defaultValue>${groupId}.theme.${theme}</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="jenkinsBaseline">
+      <defaultValue>2.504</defaultValue>
+      <validationRegex>(\d+\.\d+)</validationRegex>
+    </requiredProperty>
+    <requiredProperty key="theme">
+      <validationRegex>(\w+)</validationRegex>
+    </requiredProperty>
+    <requiredProperty key="themeTitle">
+      <defaultValue>${theme.substring(0,1).toUpperCase()}${theme.substring(1)}</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="themeMode">
+      <validationRegex>(light|dark)</validationRegex>
+    </requiredProperty>
+    <requiredProperty key="hostOnJenkinsGitHub">
+      <validationRegex>(true|false)</validationRegex>
+      <defaultValue>true</defaultValue>
+    </requiredProperty>
+  </requiredProperties>
+  <fileSets>
+    <fileSet filtered="true">
+      <directory/>
+      <excludes>
+        <exclude>src/**</exclude>
+        <exclude>pom.xml</exclude>
+        <exclude>README.md</exclude>
+      </excludes>
+    </fileSet>
+    <fileSet filtered="true" packaged="true">
+      <directory>src/main/java</directory>
+    </fileSet>
+    <fileSet filtered="true">
+      <directory>src/main/resources</directory>
+    </fileSet>
+    <fileSet filtered="true">
+      <directory>src/main/webapp</directory>
+    </fileSet>
+    <fileSet filtered="true">
+      <directory/>
+      <includes>
+        <include>README.md</include>
+      </includes>
+    </fileSet>
+  </fileSets>
+</archetype-descriptor>
