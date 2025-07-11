@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>io.jenkins.archetypes</groupId>
+    <artifactId>archetypes-parent</artifactId>
+    <version>1.29-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>theme-plugin</artifactId>
+  <packaging>maven-archetype</packaging>
+
+  <name>Theme plugin archetype</name>
+  <description>The skeleton of a Jenkins theme with a palette of your choice</description>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-common-files</id>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <phase>process-sources</phase>
+            <configuration>
+              <outputDirectory>${project.build.directory}/classes/archetype-resources</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/../common-files</directory>
+                  <excludes>
+                    <exclude>archetype-post-generate.groovy</exclude>
+                    <exclude>README.md</exclude>
+                  </excludes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-post-generate</id>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <phase>process-sources</phase>
+            <configuration>
+              <outputDirectory>${project.build.directory}/classes/META-INF</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/../common-files</directory>
+                  <includes>
+                    <include>archetype-post-generate.groovy</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

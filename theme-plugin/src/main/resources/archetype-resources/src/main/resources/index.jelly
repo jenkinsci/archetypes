@@ -1,0 +1,4 @@
+<?jelly escape-by-default='true'?>
+<div>
+  The ${theme} theme for Jenkins.
+</div>
