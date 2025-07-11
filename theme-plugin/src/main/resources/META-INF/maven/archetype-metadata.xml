@@ -13,17 +13,14 @@
       <defaultValue>999999-SNAPSHOT</defaultValue>
     </requiredProperty>
     <requiredProperty key="package">
-      <defaultValue>${groupId}.theme.${theme}</defaultValue>
+      <defaultValue>${groupId}.theme.${theme.replace("-", "")}</defaultValue>
     </requiredProperty>
     <requiredProperty key="jenkinsBaseline">
       <defaultValue>2.504</defaultValue>
       <validationRegex>(\d+\.\d+)</validationRegex>
     </requiredProperty>
     <requiredProperty key="theme">
-      <validationRegex>(\w+)</validationRegex>
-    </requiredProperty>
-    <requiredProperty key="themeTitle">
-      <defaultValue>${theme.substring(0,1).toUpperCase()}${theme.substring(1)}</defaultValue>
+      <validationRegex>^([a-z]+(\-[a-z]+)?)$</validationRegex>
     </requiredProperty>
     <requiredProperty key="themeMode">
       <validationRegex>(light|dark)</validationRegex>
