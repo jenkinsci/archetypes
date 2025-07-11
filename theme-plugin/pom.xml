@@ -12,7 +12,7 @@
   <packaging>maven-archetype</packaging>
 
   <name>Theme plugin archetype</name>
-  <description>The skeleton of a Jenkins theme with a palette of your choice</description>
+  <description>The skeleton of a Jenkins theme plugin</description>
 
   <build>
     <plugins>

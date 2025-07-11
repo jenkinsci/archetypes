@@ -14,7 +14,7 @@
   <version>${changelist}</version>
   <packaging>hpi</packaging>
 
-  <name>${themeTitle} Theme Plugin</name>
+  <name>$THEME_TITLE_NAME Theme Plugin</name>
 #if( $hostOnJenkinsGitHub == "true" )
   <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
 

@@ -1,4 +1,4 @@
-# ${themeTitle} Theme Plugin
+# $THEME_TITLE_NAME Theme Plugin
 
 #if( $hostOnJenkinsGitHub == "true" )
 [![Build Status](https://ci.jenkins.io/job/Plugins/job/${theme}-theme-plugin/job/main/badge/icon)](https://ci.jenkins.io/job/Plugins/job/${theme}-theme-plugin/job/main/)
@@ -11,11 +11,11 @@
 
 ## Introduction
 
-This plugin provides the ${themeTitle} theme for Jenkins.
+This plugin provides the $THEME_TITLE_NAME theme for Jenkins.
 
 ## Usage
 
-After installing this plugin, go to _Manage Jenkins » Appearance » Themes_ and select the _${themeTitle}_ theme.
+After installing this plugin, go to _Manage Jenkins » Appearance » Themes_ and select the _$THEME_TITLE_NAME_ theme.
 
 #if( $hostOnJenkinsGitHub == "true" )
 ## Contributing

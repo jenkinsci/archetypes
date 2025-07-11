@@ -9,13 +9,13 @@ import java.util.List;
 import org.jenkinsci.Symbol;
 import org.kohsuke.stapler.DataBoundConstructor;
 
-public class ${themeTitle}Theme extends ThemeManagerFactory {
+public class $THEME_CLASS_NAMETheme extends ThemeManagerFactory {
 
     static final String CSS = "${theme}.css";
     static final String ID = "${theme}";
 
     @DataBoundConstructor
-    public ${themeTitle}Theme() {
+    public $THEME_CLASS_NAMETheme() {
         // Stapler
     }
 
@@ -37,7 +37,7 @@ public class ${themeTitle}Theme extends ThemeManagerFactory {
 
         @Override
         public ThemeManagerFactory getInstance() {
-            return new ${themeTitle}Theme();
+            return new $THEME_CLASS_NAMETheme();
         }
 
         @Override
@@ -48,7 +48,7 @@ public class ${themeTitle}Theme extends ThemeManagerFactory {
         @NonNull
         @Override
         public String getDisplayName() {
-            return "${themeTitle}";
+            return "$THEME_TITLE_NAME";
         }
 
         @Override

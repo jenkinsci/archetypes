@@ -10,7 +10,7 @@ import org.kohsuke.stapler.StaplerRequest2;
 import org.kohsuke.stapler.StaplerResponse2;
 
 @Extension
-public class ${themeTitle}RootAction implements UnprotectedRootAction {
+public class $THEME_CLASS_NAMERootAction implements UnprotectedRootAction {
 
     @Override
     public String getIconFileName() {
@@ -24,7 +24,7 @@ public class ${themeTitle}RootAction implements UnprotectedRootAction {
 
     @Override
     public String getUrlName() {
-        return "theme-" + ${themeTitle}Theme.ID;
+        return "theme-" + $THEME_CLASS_NAMETheme.ID;
     }
 
     public void doDynamic(StaplerRequest2 req, StaplerResponse2 rsp) throws IOException, ServletException {
@@ -32,7 +32,7 @@ public class ${themeTitle}RootAction implements UnprotectedRootAction {
         if (cssFile.startsWith("/")) {
             cssFile = cssFile.substring(1);
         }
-        if (!${themeTitle}Theme.CSS.equals(cssFile)) {
+        if (!$THEME_CLASS_NAMETheme.CSS.equals(cssFile)) {
             rsp.sendError(404);
             return;
         }
