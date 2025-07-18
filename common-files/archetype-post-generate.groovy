@@ -24,39 +24,26 @@ if (properties.get("hostOnJenkinsGitHub") == "false") {
     }
 }
 
-if (properties.get('theme') != null) {
-    String theme = properties.get('theme')
-    def parts = theme.split("-").collect {it.capitalize()}
+properties.get('theme')?.with { theme ->
+    String[] parts = theme.split("-").collect { it.capitalize() }
     String themeClassName = parts.join('')
     String themeTitleName = parts.join(' ')
 
-    replaceInFile('__themeClassNameRootAction.java', (themeClassName + 'RootAction.java') as String, themeClassName, themeTitleName, projectPath)
-    replaceInFile('__themeClassNameTheme.java',( themeClassName + 'Theme.java') as String, themeClassName, themeTitleName, projectPath)
-    replaceInFile('index.jelly', null, themeClassName, themeTitleName, projectPath)
-    replaceInFile('pom.xml', null, themeClassName, themeTitleName, projectPath)
-    replaceInFile('README.md', null, themeClassName, themeTitleName, projectPath)
+    List<TextReplacement> replacements = [
+            new TextReplacement('$THEME_CLASS_NAME', themeClassName),
+            new TextReplacement('$THEME_TITLE_NAME', themeTitleName)
+    ]
+
+    replaceInFile(projectPath, [
+            new FileReplacement('__themeClassNameRootAction.java', "${themeClassName}RootAction.java", replacements),
+            new FileReplacement('__themeClassNameTheme.java', "${themeClassName}Theme.java", replacements),
+            new FileReplacement('__themeClassNameThemeTest.java', "${themeClassName}ThemeTest.java", replacements),
+            new FileReplacement('index.jelly', null, replacements),
+            new FileReplacement('pom.xml', null, replacements),
+            new FileReplacement('README.md', null, replacements)
+    ])
 }
 
-// Needs to be defined outside the if block to avoid compilation error
-static def replaceInFile(String old, String replacement, String themeClassName, String themeTitleName, Path projectPath) {
-    try (Stream<Path> pathStream = Files.find(
-            projectPath,
-            Integer.MAX_VALUE,
-            (path, attr) -> path.getFileName().toString() == old
-    )) {
-        pathStream.findFirst()
-                .ifPresent {
-                    def file = it.toFile()
-                    String content = file.text
-                    content = content.replace('$THEME_CLASS_NAME', themeClassName)
-                    content = content.replace('$THEME_TITLE_NAME', themeTitleName)
-                    file.text = content
-                    if (replacement != null) {
-                        Files.move(it, it.parent.resolve(replacement))
-                    }
-                }
-    }
-}
 
 // Adding gitignore file via maven-resources-plugin is broken
 // see https://issues.apache.org/jira/browse/ARCHETYPE-505?focusedCommentId=17277974&page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#comment-17277974
@@ -65,3 +52,24 @@ Path targetPath = gitIgnorePath.getParent().resolve(".gitignore");
 Files.move(gitIgnorePath, targetPath)
 
 println properties
+
+// Needs to be defined outside the if block to avoid compilation error
+record TextReplacement(String target, String replacement) {
+    String replace(String content) { content.replace(target, replacement) }
+}
+
+record FileReplacement(String oldName, String newName, List<TextReplacement> replacements) {
+    boolean matches(Path path) { oldName == path.getFileName().toString() }
+
+    void replace(Path path) {
+        File file = path.toFile()
+        file.text = replacements.inject(file.text as String) { acc, r -> r.replace(acc) }
+        newName?.with { Files.move(path, path.parent.resolve(it)) }
+    }
+}
+
+private static void replaceInFile(Path projectPath, List<FileReplacement> files) {
+    try (Stream<Path> pathStream = Files.find(projectPath, Integer.MAX_VALUE, (path, _) -> files.any { it.matches(path) })) {
+        pathStream.forEach { it -> files.find {r -> r.matches(it) }.replace(it) }
+    }
+}

@@ -58,6 +58,13 @@
       <artifactId>theme-manager</artifactId>
       <version>313.v8657a_a_7692cb_</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.microsoft.playwright</groupId>
+      <artifactId>playwright</artifactId>
+      <version>1.52.0</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <repositories>
