@@ -74,38 +74,41 @@
   /* Colors */
   /* Base palette to match background and accent-color theme */
   /* TODO: Change these colors to match your theme */
-  --blue: blue;
-  --brown: brown;
-  --cyan: cyan;
-  --green: green;
-  --indigo: indigo;
-  --orange: orange;
-  --pink: pink;
-  --purple: purple;
   --red: red;
+  --orange: orange;
   --yellow: yellow;
+  --green: green;
+  --blue: blue;
+  --cyan: cyan;
+  --teal: teal;
+  --indigo: indigo;
+  --purple: purple;
+  --pink: pink;
+  --brown: brown;
 
   /* Derived variants (light/dark) */
-  --light-blue: oklch(from var(--blue) calc(l + 0.2) c h);
-  --dark-blue: oklch(from var(--blue) calc(l - 0.2) c h);
-  --light-brown: oklch(from var(--brown) calc(l + 0.2) c h);
-  --dark-brown: oklch(from var(--brown) calc(l - 0.2) c h);
-  --light-cyan: oklch(from var(--cyan) calc(l + 0.2) c h);
-  --dark-cyan: oklch(from var(--cyan) calc(l - 0.2) c h);
-  --light-green: oklch(from var(--green) calc(l + 0.2) c h);
-  --dark-green: oklch(from var(--green) calc(l - 0.2) c h);
-  --light-indigo: oklch(from var(--indigo) calc(l + 0.2) c h);
-  --dark-indigo: oklch(from var(--indigo) calc(l - 0.2) c h);
-  --light-orange: oklch(from var(--orange) calc(l + 0.2) c h);
-  --dark-orange: oklch(from var(--orange) calc(l - 0.2) c h);
-  --light-pink: oklch(from var(--pink) calc(l + 0.2) c h);
-  --dark-pink: oklch(from var(--pink) calc(l - 0.2) c h);
-  --light-purple: oklch(from var(--purple) calc(l + 0.2) c h);
-  --dark-purple: oklch(from var(--purple) calc(l - 0.2) c h);
   --light-red: oklch(from var(--red) calc(l + 0.2) c h);
   --dark-red: oklch(from var(--red) calc(l - 0.2) c h);
+  --light-orange: oklch(from var(--orange) calc(l + 0.2) c h);
+  --dark-orange: oklch(from var(--orange) calc(l - 0.2) c h);
   --light-yellow: oklch(from var(--yellow) calc(l + 0.2) c h);
   --dark-yellow: oklch(from var(--yellow) calc(l - 0.2) c h);
+  --light-green: oklch(from var(--green) calc(l + 0.2) c h);
+  --dark-green: oklch(from var(--green) calc(l - 0.2) c h);
+  --light-blue: oklch(from var(--blue) calc(l + 0.2) c h);
+  --dark-blue: oklch(from var(--blue) calc(l - 0.2) c h);
+  --light-cyan: oklch(from var(--cyan) calc(l + 0.2) c h);
+  --dark-cyan: oklch(from var(--cyan) calc(l - 0.2) c h);
+  --light-teal: oklch(from var(--teal) calc(l + 0.2) c h);
+  --dark-teal: oklch(from var(--teal) calc(l - 0.2) c h);
+  --light-indigo: oklch(from var(--indigo) calc(l + 0.2) c h);
+  --dark-indigo: oklch(from var(--indigo) calc(l - 0.2) c h);
+  --light-purple: oklch(from var(--purple) calc(l + 0.2) c h);
+  --dark-purple: oklch(from var(--purple) calc(l - 0.2) c h);
+  --light-pink: oklch(from var(--pink) calc(l + 0.2) c h);
+  --dark-pink: oklch(from var(--pink) calc(l - 0.2) c h);
+  --light-brown: oklch(from var(--brown) calc(l + 0.2) c h);
+  --dark-brown: oklch(from var(--brown) calc(l - 0.2) c h);
 
   /* Tooltips */
   --tooltip-box-shadow:
