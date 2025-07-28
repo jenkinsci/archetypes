@@ -1,8 +1,14 @@
 package ${package}.playwright;
 
+import static ${package}.playwright.Theme.CssVariable.background;
+
+import ${package}.$THEME_CLASS_NAMETheme;
 import io.jenkins.plugins.thememanager.ThemeManagerFactoryDescriptor;
 
 public record Theme(String name, String id, CssVariable variableToCheck) {
+
+    public static Theme $THEME_CONSTANT_NAME = new Theme(new $THEME_CLASS_NAMETheme.DescriptorImpl(), background("white"));
+
     public Theme {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Theme name cannot be null or empty");
@@ -15,12 +21,11 @@ public record Theme(String name, String id, CssVariable variableToCheck) {
         }
     }
 
-    public static Theme of(ThemeManagerFactoryDescriptor theme, CssVariable variableToCheck) {
-        return new Theme(theme.getDisplayName(), theme.getThemeKey(), variableToCheck);
+    public Theme(ThemeManagerFactoryDescriptor theme, CssVariable variableToCheck) {
+        this(theme.getDisplayName(), theme.getThemeKey(), variableToCheck);
     }
 
     public record CssVariable(String name, String expected) {
-
         public CssVariable {
             if (name == null || name.isEmpty()) {
                 throw new IllegalArgumentException("CSS variable name cannot be null or empty");
@@ -35,10 +40,6 @@ public record Theme(String name, String id, CssVariable variableToCheck) {
 
         public static CssVariable background(String expectedValue) {
             return new CssVariable("--background", expectedValue);
-        }
-
-        public String name() {
-            return name;
         }
     }
 

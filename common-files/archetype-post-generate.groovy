@@ -28,10 +28,12 @@ properties.get('theme')?.with { theme ->
     def parts = (theme as String).split('-').collect { it.capitalize() }
     def themeClassName = parts.join('')
     def themeTitleName = parts.join(' ')
+    def themeConstantName = parts.collect {it.toUpperCase()}.join('_')
 
     def replacements = [
             new TextReplacement('$THEME_CLASS_NAME', themeClassName),
-            new TextReplacement('$THEME_TITLE_NAME', themeTitleName)
+            new TextReplacement('$THEME_TITLE_NAME', themeTitleName),
+            new TextReplacement('$THEME_CONSTANT_NAME', themeConstantName)
     ]
 
     replaceInFile(projectPath, [
@@ -39,6 +41,7 @@ properties.get('theme')?.with { theme ->
             new FileReplacement('__themeClassNameTheme.java', "${themeClassName}Theme.java", replacements),
             new FileReplacement('__themeClassNameThemeTest.java', "${themeClassName}ThemeTest.java", replacements),
             new FileReplacement('index.jelly', null, replacements),
+            new FileReplacement('Theme.java', null, replacements),
             new FileReplacement('pom.xml', null, replacements),
             new FileReplacement('README.md', null, replacements)
     ])
