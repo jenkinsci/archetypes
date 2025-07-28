@@ -25,11 +25,11 @@ if (properties.get("hostOnJenkinsGitHub") == "false") {
 }
 
 properties.get('theme')?.with { theme ->
-    String[] parts = theme.split("-").collect { it.capitalize() }
-    String themeClassName = parts.join('')
-    String themeTitleName = parts.join(' ')
+    def parts = (theme as String).split('-').collect { it.capitalize() }
+    def themeClassName = parts.join('')
+    def themeTitleName = parts.join(' ')
 
-    List<TextReplacement> replacements = [
+    def replacements = [
             new TextReplacement('$THEME_CLASS_NAME', themeClassName),
             new TextReplacement('$THEME_TITLE_NAME', themeTitleName)
     ]
@@ -62,7 +62,7 @@ record FileReplacement(String oldName, String newName, List<TextReplacement> rep
     boolean matches(Path path) { oldName == path.getFileName().toString() }
 
     void replace(Path path) {
-        File file = path.toFile()
+        def file = path.toFile()
         file.text = replacements.inject(file.text as String) { acc, r -> r.replace(acc) }
         newName?.with { Files.move(path, path.parent.resolve(it)) }
     }
