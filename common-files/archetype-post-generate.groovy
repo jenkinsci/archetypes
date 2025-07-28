@@ -42,6 +42,7 @@ properties.get('theme')?.with { theme ->
     replace(main.resolve('resources').resolve('index.jelly'), replacements)
     replace(testJava.resolve('playwright').resolve('__themeClassNameThemeTest.java'), replacements, "${themeClassName}ThemeTest.java")
     replace(testJava.resolve('playwright').resolve('Theme.java'), replacements)
+    replace(testJava.resolve('jcasc').resolve('__themeClassNameThemeJCasCTest.java'), replacements, "${themeClassName}ThemeJCasCTest.java")
     replace(projectPath.resolve('pom.xml'), replacements)
     replace(projectPath.resolve('README.md'), replacements)
 }

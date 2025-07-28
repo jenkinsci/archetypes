@@ -1,0 +1,5 @@
+---
+appearance:
+  themeManager:
+    disableUserThemes: true
+    theme: "${theme}"
