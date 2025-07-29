@@ -6,10 +6,10 @@ pipeline {
         label 'maven-21'
     }
     stages {
-        stage('main') {
+        stage('Build') {
             steps {
                 timeout(time: 1, unit: 'HOURS') {
-                    sh 'mvn -B -ntp clean verify'
+                    infra.runMaven(["clean", "verify"], 21)
                 }
             }
         }
