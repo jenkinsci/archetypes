@@ -1,7 +1,6 @@
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
-import java.util.stream.Stream
 
 Path projectPath = Paths.get(request.outputDirectory, request.artifactId)
 Properties properties = request.properties
@@ -24,38 +23,28 @@ if (properties.get("hostOnJenkinsGitHub") == "false") {
     }
 }
 
-if (properties.get('theme') != null) {
-    String theme = properties.get('theme')
-    def parts = theme.split("-").collect {it.capitalize()}
-    String themeClassName = parts.join('')
-    String themeTitleName = parts.join(' ')
+properties.get('theme')?.with { theme ->
+    def packagePath = (properties.get('package') as String).replace('.', File.separator)
+    def main = projectPath.resolve('src').resolve('main')
+    def mainJava = main.resolve('java').resolve(packagePath)
+    def testJava = projectPath.resolve('src').resolve('test').resolve('java').resolve(packagePath)
 
-    replaceInFile('__themeClassNameRootAction.java', (themeClassName + 'RootAction.java') as String, themeClassName, themeTitleName, projectPath)
-    replaceInFile('__themeClassNameTheme.java',( themeClassName + 'Theme.java') as String, themeClassName, themeTitleName, projectPath)
-    replaceInFile('index.jelly', null, themeClassName, themeTitleName, projectPath)
-    replaceInFile('pom.xml', null, themeClassName, themeTitleName, projectPath)
-    replaceInFile('README.md', null, themeClassName, themeTitleName, projectPath)
-}
+    def parts = (theme as String).split('-').collect { it.capitalize() }
+    def themeClassName = parts.join('')
+    def replacements = [
+            new TextReplacement('$THEME_CLASS_NAME', themeClassName),
+            new TextReplacement('$THEME_TITLE_NAME', parts.join(' ')),
+            new TextReplacement('$THEME_CONSTANT_NAME', parts.collect { it.toUpperCase() }.join('_'))
+    ]
 
-// Needs to be defined outside the if block to avoid compilation error
-static def replaceInFile(String old, String replacement, String themeClassName, String themeTitleName, Path projectPath) {
-    try (Stream<Path> pathStream = Files.find(
-            projectPath,
-            Integer.MAX_VALUE,
-            (path, attr) -> path.getFileName().toString() == old
-    )) {
-        pathStream.findFirst()
-                .ifPresent {
-                    def file = it.toFile()
-                    String content = file.text
-                    content = content.replace('$THEME_CLASS_NAME', themeClassName)
-                    content = content.replace('$THEME_TITLE_NAME', themeTitleName)
-                    file.text = content
-                    if (replacement != null) {
-                        Files.move(it, it.parent.resolve(replacement))
-                    }
-                }
-    }
+    replace(mainJava.resolve('__themeClassNameRootAction.java'), replacements, "${themeClassName}RootAction.java")
+    replace(mainJava.resolve('__themeClassNameTheme.java'), replacements, "${themeClassName}Theme.java")
+    replace(main.resolve('resources').resolve('index.jelly'), replacements)
+    replace(testJava.resolve('playwright').resolve('__themeClassNameThemeTest.java'), replacements, "${themeClassName}ThemeTest.java")
+    replace(testJava.resolve('playwright').resolve('Theme.java'), replacements)
+    replace(testJava.resolve('jcasc').resolve('__themeClassNameThemeJCasCTest.java'), replacements, "${themeClassName}ThemeJCasCTest.java")
+    replace(projectPath.resolve('pom.xml'), replacements)
+    replace(projectPath.resolve('README.md'), replacements)
 }
 
 // Adding gitignore file via maven-resources-plugin is broken
@@ -65,3 +54,14 @@ Path targetPath = gitIgnorePath.getParent().resolve(".gitignore");
 Files.move(gitIgnorePath, targetPath)
 
 println properties
+
+// Needs to be defined outside the if block to avoid compilation error
+record TextReplacement(String target, String replacement) {
+    String replace(String content) { content.replace(target, replacement) }
+}
+
+private static void replace(Path target, List<TextReplacement> replacements, String newName = null) {
+    def file = target.toFile()
+    file.text = replacements.inject(file.text as String) { acc, r -> r.replace(acc) }
+    newName?.with { Files.move(target, target.parent.resolve(it)) }
+}

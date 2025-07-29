@@ -36,23 +36,22 @@
       <excludes>
         <exclude>src/**</exclude>
         <exclude>pom.xml</exclude>
-        <exclude>README.md</exclude>
       </excludes>
     </fileSet>
     <fileSet filtered="true" packaged="true">
       <directory>src/main/java</directory>
     </fileSet>
+    <fileSet filtered="true" packaged="true">
+      <directory>src/test/java</directory>
+    </fileSet>
     <fileSet filtered="true">
       <directory>src/main/resources</directory>
     </fileSet>
-    <fileSet filtered="true">
-      <directory>src/main/webapp</directory>
+    <fileSet filtered="true" packaged="true">
+      <directory>src/test/resources</directory>
     </fileSet>
     <fileSet filtered="true">
-      <directory/>
-      <includes>
-        <include>README.md</include>
-      </includes>
+      <directory>src/main/webapp</directory>
     </fileSet>
   </fileSets>
 </archetype-descriptor>
