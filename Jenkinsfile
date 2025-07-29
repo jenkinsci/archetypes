@@ -3,17 +3,13 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '20'))
     }
     agent {
-        label 'docker'
+        label 'maven-21'
     }
     stages {
         stage('main') {
             steps {
                 timeout(time: 1, unit: 'HOURS') {
-                    sh '''
-                        docker version
-                        docker system prune --all --force
-                        DOCKER_BUILDKIT=1 docker build --progress plain --no-cache .
-                    '''
+                    sh 'mvn -B -ntp clean verify'
                 }
             }
         }
