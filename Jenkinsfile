@@ -9,7 +9,9 @@ pipeline {
         stage('Build') {
             steps {
                 timeout(time: 1, unit: 'HOURS') {
-                    infra.runMaven(["clean", "verify"], 21)
+                    script {
+                        infra.runMaven(["clean", "verify"], 21)
+                    }
                 }
             }
         }
