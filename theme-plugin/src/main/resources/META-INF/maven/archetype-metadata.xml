@@ -15,10 +15,6 @@
     <requiredProperty key="package">
       <defaultValue>${groupId}.theme.${theme.replace("-", "")}</defaultValue>
     </requiredProperty>
-    <requiredProperty key="jenkinsBaseline">
-      <defaultValue>2.504</defaultValue>
-      <validationRegex>(\d+\.\d+)</validationRegex>
-    </requiredProperty>
     <requiredProperty key="theme">
       <validationRegex>^([a-z]+(\-[a-z]+)?)$</validationRegex>
     </requiredProperty>

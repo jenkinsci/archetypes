@@ -36,8 +36,9 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <!-- https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/ -->
-    <jenkins.baseline>${jenkinsBaseline}</jenkins.baseline>
+    <jenkins.baseline>2.504</jenkins.baseline>
     <jenkins.version>${jenkins.baseline}.3</jenkins.version>
+    <jenkins.bom.version>4770.v9a_2b_7a_9d8b_7f</jenkins.bom.version>
   </properties>
 
   <dependencyManagement>
@@ -45,7 +46,7 @@
       <dependency>
         <groupId>io.jenkins.tools.bom</groupId>
         <artifactId>bom-${jenkins.baseline}.x</artifactId>
-        <version>4770.v9a_2b_7a_9d8b_7f</version>
+        <version>${bom.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
