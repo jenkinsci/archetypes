@@ -1,0 +1,38 @@
+name: Jenkins Baseline update
+on:
+  schedule:
+    - cron: "0 0 * * 1"
+  workflow_dispatch:
+
+jobs:
+  update-baseline:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write # Required for creating labels
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run sync script
+        run: |
+          node .github/scripts/baseline-update.js
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: 'chore: sync the jenkins baseline'
+          title: 'chore: sync the jenkins baseline'
+          body: |
+            Automated PR to sync the jenkins baseline version
+          branch: chore/sync-baseline
+          delete-branch: true
+          labels: |
+            automated pr
+            baseline sync
