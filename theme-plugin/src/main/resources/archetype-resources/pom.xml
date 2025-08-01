@@ -40,6 +40,7 @@
     <jenkins.version>${jenkins.baseline}.3</jenkins.version>
     <jenkins.bom.version>4770.v9a_2b_7a_9d8b_7f</jenkins.bom.version>
     <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
+    <spotless.check.skip>false</spotless.check.skip>
   </properties>
 
   <dependencyManagement>
@@ -47,7 +48,7 @@
       <dependency>
         <groupId>io.jenkins.tools.bom</groupId>
         <artifactId>bom-${jenkins.baseline}.x</artifactId>
-        <version>${bom.version}</version>
+        <version>${jenkins.bom.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
