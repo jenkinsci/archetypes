@@ -58,6 +58,7 @@ sources:
     spec:
       command: version="{{ source "JenkinsBaseline" }}" && echo "${version##*.}"
   BOM:
+    name: Get the BOM version for the latest Jenkins LTS baseline version
     kind: maven
     source: JenkinsBaselineMajorMinor
     dependson:
