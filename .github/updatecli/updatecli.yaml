@@ -2,31 +2,38 @@
 name: Bump the Jenkins LTS baseline version in the POMs
 
 definitions:
+  archetypes:
+    theme-plugin: &theme-plugin-path theme-plugin/src/main/resources/archetype-resources/pom.xml
+    empty-plugin: &empty-plugin-path empty-plugin/src/main/resources/archetype-resources/pom.xml
+    hello-world: &hello-world-path hello-world/src/main/resources/archetype-resources/pom.xml
+    global-configuration: &global-config-path global-configuration/src/main/resources/archetype-resources/pom.xml
+
   updates:
     updateBaseline: &update-baseline
       kind: file
       sourceid: JenkinsBaselineMajorMinor
-      spec:
-        matchpattern: >-
-          (.*<jenkins.baseline>)(.*)(</jenkins.baseline>.*)
-        replacepattern: >-
-          ${1}{{ source "JenkinsBaselineMajorMinor" }}${3}
+    updateBaselineSpec: &update-baseline-spec
+      matchpattern: >-
+        (.*<jenkins.baseline>)(.*)(</jenkins.baseline>.*)
+      replacepattern: >-
+        ${1}{{ source "JenkinsBaselineMajorMinor" }}${3}
     updateBom: &update-bom
       kind: file
       sourceid: BOM
-      spec:
-        matchpattern: >-
-          (.*<jenkins.bom.version>)(.*)(</jenkins.bom.version>.*)
-        replacepattern: >-
-          ${1}{{ source "BOM" }}${3}
+    updateBomSpec: &update-bom-spec
+      matchpattern: >-
+        (.*<jenkins.bom.version>)(.*)(</jenkins.bom.version>.*)
+      replacepattern: >-
+        ${1}{{ source "BOM" }}${3}
     updateJenkinsVersion: &update-jenkins-version
       kind: file
       sourceid: JenkinsBaselinePatch
-      spec:
-        matchpattern: >-
-          (.*<jenkins.version>)(.*)(</jenkins.version>.*)
-        replacepattern: >-
-          ${1}${jenkins.baseline}.{{ source "JenkinsBaselinePatch" }}${3}
+    updateJenkinsVersionSpec: &update-jenkins-version-spec
+      matchpattern: >-
+        (.*<jenkins.version>)(.*)(</jenkins.version>.*)
+      replacepattern: >-
+        ${1}${jenkins.baseline}.{{ source "JenkinsBaselinePatch" }}${3}
+
 
 sources:
   JenkinsBaseline:
@@ -98,65 +105,77 @@ targets:
     <<: *update-baseline
     name: "Update the jenkins baseline in the theme plugin archetype"
     spec:
-      file: theme-plugin/src/main/resources/archetype-resources/pom.xml
+      <<: *update-baseline-spec
+      file: *theme-plugin-path
   updateThemePluginBom:
     <<: *update-bom
     name: "Update the jenkins bom in the theme plugin archetype"
     spec:
-      file: theme-plugin/src/main/resources/archetype-resources/pom.xml
+      <<: *update-bom-spec
+      file: *theme-plugin-path
   updateThemePluginJenkinsVersion:
     <<: *update-jenkins-version
     name: "Update the jenkins version in the theme plugin archetype"
     spec:
-      file: theme-plugin/src/main/resources/archetype-resources/pom.xml
+      <<: *update-jenkins-version-spec
+      file: *theme-plugin-path
   # Empty Plugin Archetype
   updateEmptyPluginBaseline:
     <<: *update-baseline
     name: "Update the jenkins baseline in the empty plugin archetype"
     spec:
-      file: empty-plugin/src/main/resources/archetype-resources/pom.xml
+      <<: *update-baseline-spec
+      file: *empty-plugin-path
   updateEmptyPluginBom:
     <<: *update-bom
     name: "Update the jenkins bom in the empty plugin archetype"
     spec:
-      file: empty-plugin/src/main/resources/archetype-resources/pom.xml
+      <<: *update-bom-spec
+      file: *empty-plugin-path
   updateEmptyPluginJenkinsVersion:
     <<: *update-jenkins-version
     name: "Update the jenkins version in the empty plugin archetype"
     spec:
-      file: empty-plugin/src/main/resources/archetype-resources/pom.xml
+      <<: *update-jenkins-version-spec
+      file: *empty-plugin-path
   # Global Configuration Archetype
   updateGlobalConfigBaseline:
     <<: *update-baseline
     name: "Update the jenkins baseline in the global configuration archetype"
     spec:
-      file: global-configuration/src/main/resources/archetype-resources/pom.xml
+      <<: *update-baseline-spec
+      file: *global-config-path
   updateGlobalConfigBom:
     <<: *update-bom
     name: "Update the jenkins bom in the global configuration archetype"
     spec:
-      file: global-configuration/src/main/resources/archetype-resources/pom.xml
+      <<: *update-bom-spec
+      file: *global-config-path
   updateGlobalConfigJenkinsVersion:
     <<: *update-jenkins-version
     name: "Update the jenkins version in the global configuration archetype"
     spec:
-      file: global-configuration/src/main/resources/archetype-resources/pom.xml
+      <<: *update-jenkins-version-spec
+      file: *global-config-path
   # Hello World Archetype
   updateHelloWorldBaseline:
     <<: *update-baseline
     name: "Update the jenkins baseline in the hello world archetype"
     spec:
-      file: hello-world/src/main/resources/archetype-resources/pom.xml
+      <<: *update-baseline-spec
+      file: *hello-world-path
   updateHelloWorldBom:
     <<: *update-bom
     name: "Update the jenkins bom in the hello world archetype"
     spec:
-      file: hello-world/src/main/resources/archetype-resources/pom.xml
+      <<: *update-bom-spec
+      file: *hello-world-path
   updateHelloWorldJenkinsVersion:
     <<: *update-jenkins-version
     name: "Update the jenkins version in the hello world archetype"
     spec:
-      file: hello-world/src/main/resources/archetype-resources/pom.xml
+      <<: *update-jenkins-version-spec
+      file: *hello-world-path
   # Update the cache file
   updateCache:
     kind: file
