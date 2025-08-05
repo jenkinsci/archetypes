@@ -34,6 +34,18 @@ definitions:
       replacepattern: >-
         ${1}${jenkins.baseline}.{{ source "JenkinsBaselinePatch" }}${3}
 
+scms:
+  default:
+    kind: github
+    spec:
+      user: "{{ .github.user }}"
+      email: "{{ .github.email }}"
+      owner: "{{ .github.owner }}"
+      repository: "{{ .github.repository }}"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      branch: "{{ .github.branch }}"
+
 
 sources:
   JenkinsBaseline:
@@ -184,3 +196,13 @@ targets:
     spec:
       file: .github/updatecli/.jenkins-baseline-cache
       forcecreate: true
+
+actions:
+  default:
+    kind: github/pullrequest
+    scmid: default
+    title: Update Jenkins baseline version and BOM
+    spec:
+      labels:
+        - dependencies
+        - chore
