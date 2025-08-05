@@ -1,0 +1,166 @@
+---
+name: Bump the Jenkins LTS baseline version in the POMs
+
+definitions:
+  updates:
+    updateBaseline: &update-baseline
+      kind: file
+      sourceid: JenkinsBaselineMajorMinor
+      spec:
+        matchpattern: >-
+          (.*<jenkins.baseline>)(.*)(</jenkins.baseline>.*)
+        replacepattern: >-
+          ${1}{{ source "JenkinsBaselineMajorMinor" }}${3}
+    updateBom: &update-bom
+      kind: file
+      sourceid: BOM
+      spec:
+        matchpattern: >-
+          (.*<jenkins.bom.version>)(.*)(</jenkins.bom.version>.*)
+        replacepattern: >-
+          ${1}{{ source "BOM" }}${3}
+    updateJenkinsVersion: &update-jenkins-version
+      kind: file
+      sourceid: JenkinsBaselinePatch
+      spec:
+        matchpattern: >-
+          (.*<jenkins.version>)(.*)(</jenkins.version>.*)
+        replacepattern: >-
+          ${1}${jenkins.baseline}.{{ source "JenkinsBaselinePatch" }}${3}
+
+sources:
+  JenkinsBaseline:
+    name: Get the latest Jenkins LTS baseline version
+    kind: shell
+    spec:
+      command: bash ./.github/updatecli/scripts/jenkins-lts-baseline.sh
+  JenkinsBaselineMajorMinor:
+    name: Get the major and minor version of the latest Jenkins LTS baseline version
+    kind: shell
+    source: JenkinsBaseline
+    dependson:
+      - JenkinsBaseline
+    spec:
+      command: version="{{ source "JenkinsBaseline" }}" && echo "${version%.*}"
+  JenkinsBaselinePatch:
+    name: Get the patch version of the latest Jenkins LTS baseline version
+    kind: shell
+    source: JenkinsBaseline
+    dependson:
+      - JenkinsBaseline
+    spec:
+      command: version="{{ source "JenkinsBaseline" }}" && echo "${version##*.}"
+  BOM:
+    kind: maven
+    source: JenkinsBaselineMajorMinor
+    dependson:
+      - JenkinsBaselineMajorMinor
+    spec:
+      repository: "https://repo.jenkins-ci.org/releases"
+      groupid: "io.jenkins.tools.bom"
+      artifactid: bom-{{ source "JenkinsBaselineMajorMinor" }}.x
+
+conditions:
+  jenkinsBaselineVersion:
+    name: Check if the Jenkins baseline version is valid
+    kind: jenkins
+    sourceid: JenkinsBaseline
+  bomVersion:
+    name: Check if the BOM version exists
+    kind: maven
+    disablesourceinput: true
+    spec:
+      repository: "https://repo.jenkins-ci.org/releases"
+      groupid: "io.jenkins.tools.bom"
+      artifactid: 'bom-{{ source "JenkinsBaselineMajorMinor" }}.x'
+      version: '{{ source "BOM" }}'
+  baselineHasChanged:
+    name: Check if Jenkins baseline version has changed
+    kind: shell
+    sourceid: JenkinsBaseline
+    spec:
+      command: |
+        baseline="{{ source "JenkinsBaseline" }}"
+        cachedBaseline="$(cat .github/updatecli/.jenkins-baseline-cache)"
+        echo "Baseline: $baseline"
+        echo "Cached baseline: $cachedBaseline"
+        if [ "$baseline" == "$cachedBaseline" ]; then
+          echo "Baseline has not changed ($baseline), no need to update" >&2
+          exit 1
+        else
+          echo "Baseline has changed, updating"
+          exit 0
+        fi
+
+targets:
+  # Theme Plugin Archetype
+  updateThemePluginBaseline:
+    <<: *update-baseline
+    name: "Update the jenkins baseline in the theme plugin archetype"
+    spec:
+      file: theme-plugin/src/main/resources/archetype-resources/pom.xml
+  updateThemePluginBom:
+    <<: *update-bom
+    name: "Update the jenkins bom in the theme plugin archetype"
+    spec:
+      file: theme-plugin/src/main/resources/archetype-resources/pom.xml
+  updateThemePluginJenkinsVersion:
+    <<: *update-jenkins-version
+    name: "Update the jenkins version in the theme plugin archetype"
+    spec:
+      file: theme-plugin/src/main/resources/archetype-resources/pom.xml
+  # Empty Plugin Archetype
+  updateEmptyPluginBaseline:
+    <<: *update-baseline
+    name: "Update the jenkins baseline in the empty plugin archetype"
+    spec:
+      file: empty-plugin/src/main/resources/archetype-resources/pom.xml
+  updateEmptyPluginBom:
+    <<: *update-bom
+    name: "Update the jenkins bom in the empty plugin archetype"
+    spec:
+      file: empty-plugin/src/main/resources/archetype-resources/pom.xml
+  updateEmptyPluginJenkinsVersion:
+    <<: *update-jenkins-version
+    name: "Update the jenkins version in the empty plugin archetype"
+    spec:
+      file: empty-plugin/src/main/resources/archetype-resources/pom.xml
+  # Global Configuration Archetype
+  updateGlobalConfigBaseline:
+    <<: *update-baseline
+    name: "Update the jenkins baseline in the global configuration archetype"
+    spec:
+      file: global-configuration/src/main/resources/archetype-resources/pom.xml
+  updateGlobalConfigBom:
+    <<: *update-bom
+    name: "Update the jenkins bom in the global configuration archetype"
+    spec:
+      file: global-configuration/src/main/resources/archetype-resources/pom.xml
+  updateGlobalConfigJenkinsVersion:
+    <<: *update-jenkins-version
+    name: "Update the jenkins version in the global configuration archetype"
+    spec:
+      file: global-configuration/src/main/resources/archetype-resources/pom.xml
+  # Hello World Archetype
+  updateHelloWorldBaseline:
+    <<: *update-baseline
+    name: "Update the jenkins baseline in the hello world archetype"
+    spec:
+      file: hello-world/src/main/resources/archetype-resources/pom.xml
+  updateHelloWorldBom:
+    <<: *update-bom
+    name: "Update the jenkins bom in the hello world archetype"
+    spec:
+      file: hello-world/src/main/resources/archetype-resources/pom.xml
+  updateHelloWorldJenkinsVersion:
+    <<: *update-jenkins-version
+    name: "Update the jenkins version in the hello world archetype"
+    spec:
+      file: hello-world/src/main/resources/archetype-resources/pom.xml
+  # Update the cache file
+  updateCache:
+    kind: file
+    sourceid: JenkinsBaseline
+    spec:
+      file: .github/updatecli/.jenkins-baseline-cache
+      forcecreate: true
