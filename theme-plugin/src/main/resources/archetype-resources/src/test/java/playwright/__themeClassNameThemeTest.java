@@ -10,13 +10,13 @@ import org.jvnet.hudson.test.junit.jupiter.WithJenkins;
 @UsePlaywright(PlaywrightConfig.class)
 public class $THEME_CLASS_NAMEThemeTest {
 
-  @Test
-  void themeLoads(JenkinsRule j, Page p) {
-    Theme theme = Theme.$THEME_CONSTANT_NAME;
-    new AppearancePage(p, j.jenkins.getRootUrl())
-        .goTo()
-        .themeIsPresent(theme)
-        .selectTheme(theme)
-        .themeIsApplied(theme);
-  }
+    @Test
+    void themeLoads(JenkinsRule j, Page p) {
+        Theme theme = Theme.$THEME_CONSTANT_NAME;
+        new AppearancePage(p, j.jenkins.getRootUrl())
+                .goTo()
+                .themeIsPresent(theme)
+                .selectTheme(theme)
+                .themeIsApplied(theme);
+    }
 }

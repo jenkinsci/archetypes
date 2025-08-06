@@ -16,7 +16,7 @@
 
   <name>$THEME_TITLE_NAME Theme Plugin</name>
 #if( $hostOnJenkinsGitHub == "true" )
-  <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
+  <url>https://github.com/${gitHubRepo}</url>
 
   <licenses>
     <license>
@@ -38,7 +38,11 @@
     <!-- https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/ -->
     <jenkins.baseline>${jenkinsBaseline}</jenkins.baseline>
     <jenkins.version>${jenkins.baseline}.3</jenkins.version>
+#if( $hostOnJenkinsGitHub == "true" )
     <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
+#end
+
+    <spotless.check.skip>false</spotless.check.skip>
   </properties>
 
   <dependencyManagement>
@@ -78,18 +82,6 @@
     </dependency>
   </dependencies>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <configuration>
-          <forkNode implementation="org.apache.maven.plugin.surefire.extensions.SurefireForkNodeFactory" />
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-
   <repositories>
     <repository>
       <id>repo.jenkins-ci.org</id>
@@ -102,4 +94,16 @@
       <url>https://repo.jenkins-ci.org/public/</url>
     </pluginRepository>
   </pluginRepositories>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <forkNode implementation="org.apache.maven.plugin.surefire.extensions.SurefireForkNodeFactory" />
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>

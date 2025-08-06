@@ -21,9 +21,7 @@ public class $THEME_CLASS_NAMETheme extends ThemeManagerFactory {
 
     @Override
     public Theme getTheme() {
-        return Theme.builder()
-            .withCssUrls(List.of(getCssUrl()))
-            .build();
+        return Theme.builder().withCssUrls(List.of(getCssUrl())).build();
     }
 
     @Extension
