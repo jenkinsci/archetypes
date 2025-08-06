@@ -40,7 +40,6 @@
     <jenkins.version>${jenkins.baseline}.3</jenkins.version>
     <jenkins.bom.version>4770.v9a_2b_7a_9d8b_7f</jenkins.bom.version>
     <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
-    <spotless.check.skip>false</spotless.check.skip>
   </properties>
 
   <dependencyManagement>
