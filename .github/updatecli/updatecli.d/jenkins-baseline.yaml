@@ -66,23 +66,6 @@ conditions:
     name: Check if the Jenkins baseline version is valid
     kind: jenkins
     sourceid: JenkinsBaseline
-  baselineHasChanged:
-    name: Check if Jenkins baseline version has changed
-    kind: shell
-    sourceid: JenkinsBaseline
-    spec:
-      command: |
-        baseline="{{ source "JenkinsBaseline" }}"
-        cachedBaseline="$(cat .github/updatecli/.jenkins-baseline-cache)"
-        echo "Baseline: $baseline"
-        echo "Cached baseline: $cachedBaseline"
-        if [ "$baseline" == "$cachedBaseline" ]; then
-          echo "Baseline has not changed ($baseline), no need to update" >&2
-          exit 1
-        else
-          echo "Baseline has changed, updating"
-          exit 0
-        fi
 
 targets:
   # Theme Plugin Archetype
@@ -137,13 +120,6 @@ targets:
     spec:
       <<: *update-jenkins-version-spec
       file: *hello-world-path
-  # Update the cache file
-  updateCache:
-    kind: file
-    sourceid: JenkinsBaseline
-    spec:
-      file: .github/updatecli/.jenkins-baseline-cache
-      forcecreate: true
 
 actions:
   default:
