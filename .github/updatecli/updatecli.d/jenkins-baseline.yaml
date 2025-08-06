@@ -17,14 +17,6 @@ definitions:
         (.*<jenkins.baseline>)(.*)(</jenkins.baseline>.*)
       replacepattern: >-
         ${1}{{ source "JenkinsBaselineMajorMinor" }}${3}
-    updateBom: &update-bom
-      kind: file
-      sourceid: BOM
-    updateBomSpec: &update-bom-spec
-      matchpattern: >-
-        (.*<jenkins.bom.version>)(.*)(</jenkins.bom.version>.*)
-      replacepattern: >-
-        ${1}{{ source "BOM" }}${3}
     updateJenkinsVersion: &update-jenkins-version
       kind: file
       sourceid: JenkinsBaselinePatch
@@ -45,7 +37,6 @@ scms:
       token: "{{ requiredEnv .github.token }}"
       username: "{{ .github.username }}"
       branch: "{{ .github.branch }}"
-
 
 sources:
   JenkinsBaseline:
@@ -69,31 +60,12 @@ sources:
       - JenkinsBaseline
     spec:
       command: version="{{ source "JenkinsBaseline" }}" && echo "${version##*.}"
-  BOM:
-    name: Get the BOM version for the latest Jenkins LTS baseline version
-    kind: maven
-    source: JenkinsBaselineMajorMinor
-    dependson:
-      - JenkinsBaselineMajorMinor
-    spec:
-      repository: "https://repo.jenkins-ci.org/releases"
-      groupid: "io.jenkins.tools.bom"
-      artifactid: bom-{{ source "JenkinsBaselineMajorMinor" }}.x
 
 conditions:
   jenkinsBaselineVersion:
     name: Check if the Jenkins baseline version is valid
     kind: jenkins
     sourceid: JenkinsBaseline
-  bomVersion:
-    name: Check if the BOM version exists
-    kind: maven
-    disablesourceinput: true
-    spec:
-      repository: "https://repo.jenkins-ci.org/releases"
-      groupid: "io.jenkins.tools.bom"
-      artifactid: 'bom-{{ source "JenkinsBaselineMajorMinor" }}.x'
-      version: '{{ source "BOM" }}'
   baselineHasChanged:
     name: Check if Jenkins baseline version has changed
     kind: shell
@@ -120,12 +92,6 @@ targets:
     spec:
       <<: *update-baseline-spec
       file: *theme-plugin-path
-  updateThemePluginBom:
-    <<: *update-bom
-    name: "Update the jenkins bom in the theme plugin archetype"
-    spec:
-      <<: *update-bom-spec
-      file: *theme-plugin-path
   updateThemePluginJenkinsVersion:
     <<: *update-jenkins-version
     name: "Update the jenkins version in the theme plugin archetype"
@@ -138,12 +104,6 @@ targets:
     name: "Update the jenkins baseline in the empty plugin archetype"
     spec:
       <<: *update-baseline-spec
-      file: *empty-plugin-path
-  updateEmptyPluginBom:
-    <<: *update-bom
-    name: "Update the jenkins bom in the empty plugin archetype"
-    spec:
-      <<: *update-bom-spec
       file: *empty-plugin-path
   updateEmptyPluginJenkinsVersion:
     <<: *update-jenkins-version
@@ -158,12 +118,6 @@ targets:
     spec:
       <<: *update-baseline-spec
       file: *global-config-path
-  updateGlobalConfigBom:
-    <<: *update-bom
-    name: "Update the jenkins bom in the global configuration archetype"
-    spec:
-      <<: *update-bom-spec
-      file: *global-config-path
   updateGlobalConfigJenkinsVersion:
     <<: *update-jenkins-version
     name: "Update the jenkins version in the global configuration archetype"
@@ -176,12 +130,6 @@ targets:
     name: "Update the jenkins baseline in the hello world archetype"
     spec:
       <<: *update-baseline-spec
-      file: *hello-world-path
-  updateHelloWorldBom:
-    <<: *update-bom
-    name: "Update the jenkins bom in the hello world archetype"
-    spec:
-      <<: *update-bom-spec
       file: *hello-world-path
   updateHelloWorldJenkinsVersion:
     <<: *update-jenkins-version
