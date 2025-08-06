@@ -36,7 +36,7 @@
   <properties>
     <changelist>999999-SNAPSHOT</changelist>
     <!-- https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/ -->
-    <jenkins.baseline>2.492</jenkins.baseline>
+    <jenkins.baseline>2.504</jenkins.baseline>
     <jenkins.version>${jenkins.baseline}.3</jenkins.version>
 #if( $hostOnJenkinsGitHub == "true" )
     <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>
