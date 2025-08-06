@@ -43,7 +43,7 @@ public class AppearancePage extends JenkinsPage<AppearancePage> {
     private Locator getThemeCard(Theme theme) {
         log.debug("Locating theme box for '{}'", theme);
         return page.getByRole(AriaRole.RADIO, new GetByRoleOptions().setName(theme.name()))
-            .locator("..");
+                .locator("..");
     }
 
     /**
@@ -56,26 +56,26 @@ public class AppearancePage extends JenkinsPage<AppearancePage> {
         log.debug("Checking appearance for selector '{}' with CSS variable '{}'", selector, variable);
         try {
             page.waitForFunction(
-                """
+                    """
         ([selector, cssVar, expected]) => {
           const el = document.querySelector(selector);
           if (!el) return false;
           return getComputedStyle(el).getPropertyValue(cssVar).trim() === expected;
         }""",
-                List.of(selector, variable.name(), variable.expected()));
+                    List.of(selector, variable.name(), variable.expected()));
         } catch (TimeoutError e) {
             Object value = page.evaluate(
-                """
+                    """
                 ([selector, cssVar]) => {
                   const el = document.querySelector(selector);
                   if (!el) return null;
                   return getComputedStyle(el).getPropertyValue(cssVar).trim();
                 }""",
-                List.of(selector, variable.name()));
+                    List.of(selector, variable.name()));
             throw new AssertionError(
-                "Could not verify that '%s' was equal to '%s', found '%s'"
-                    .formatted(variable.name(), variable.expected(), value),
-                e);
+                    "Could not verify that '%s' was equal to '%s', found '%s'"
+                            .formatted(variable.name(), variable.expected(), value),
+                    e);
         }
     }
 }
