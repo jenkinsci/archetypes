@@ -44,7 +44,7 @@ sources:
     kind: shell
     spec:
       # Use what is referred to as PreviousLTS in https://github.com/jenkins-infra/jenkins.io/blob/baf89a5513bf6dd038167a407a84d409c99b3450/updatecli/updatecli.d/jenkins-lts.yaml#L27
-      command: bash ./.github/updatecli/scripts/jenkins-lts-baseline.sh 1
+      command: bash ./.github/updatecli/scripts/jenkins-lts.sh 1
   JenkinsBaselineMajorMinor:
     name: Get the major and minor version of the latest Jenkins LTS baseline version
     kind: shell

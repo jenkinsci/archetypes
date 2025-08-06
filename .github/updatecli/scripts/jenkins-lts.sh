@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This has been copied from https://github.com/jenkins-infra/jenkins.io/blob/master/updatecli/scripts/jenkins-lts-baseline.sh
+# This has been copied from https://github.com/jenkins-infra/jenkins.io/blob/master/updatecli/scripts/jenkins-lts.sh
 
 # This script fetches the Jenkins release data, extracts the LTS version numbers, sorts them, and then outputs a specific version based on a "backward" argument.
 
@@ -23,11 +23,10 @@ awk -F'[<>]' '/<title>Jenkins /{split($3,a," "); print a[2]}' | \
 # Sorts the version numbers in ascending order.
 # It uses the sort command with the delimiter set to dot (-t.) and sorts numerically (-n) based on the first, second, and third fields (-k1,1n -k2,2n -k3,3n).
 sort -t. -k1,1n -k2,2n -k3,3n | \
-# Uses awk to get the first version of each unique base version.
+# Uses awk to get the last version of each unique base version.
 # It creates an associative array x with the first and second fields as the key and the whole version number as the value.
-# If the key is not already in the array, it stores the version number.
 # In the END block, it iterates over the array and prints the values.
-awk -F. '{if (!($1"."$2 in x)) x[$1"."$2]=$0} END {for (i in x) print x[i]}' | \
+awk -F. '{x[$1"."$2]=$0} END {for (i in x) print x[i]}' | \
 # Sorts the versions again in ascending order.
 sort -t. -k1,1n -k2,2n -k3,3n | \
 # Uses the tail command to get the "backward" version.
