@@ -10,8 +10,10 @@ set -eu -o pipefail
 
 # Get the "backward" argument, default to 0 if not provided.
 # This argument specifies which version to get, starting from 0 for the latest version.
-# Add 1 to backward to start from 1.
-backward=1
+backward=${1:-0}
+
+# Subtract 1 from backward to start from 0.
+backward=$((backward + 1))
 
 # Uses the wget command to download the RSS feed of the Jenkins changelog and outputs it to the standard output (-O -).
 wget -q -O - https://www.jenkins.io/changelog-stable/rss.xml | \
