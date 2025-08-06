@@ -128,7 +128,7 @@ actions:
   default:
     kind: github/pullrequest
     scmid: default
-    title: Update Jenkins baseline version and BOM
+    title: Update Jenkins baseline version
     spec:
       labels:
         - dependencies
