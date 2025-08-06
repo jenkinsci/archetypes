@@ -12,6 +12,7 @@ definitions:
     updateBaseline: &update-baseline
       kind: file
       sourceid: JenkinsBaselineMajorMinor
+      scmid: default
     updateBaselineSpec: &update-baseline-spec
       matchpattern: >-
         (.*<jenkins.baseline>)(.*)(</jenkins.baseline>.*)
@@ -20,6 +21,7 @@ definitions:
     updateJenkinsVersion: &update-jenkins-version
       kind: file
       sourceid: JenkinsBaselinePatch
+      scmid: default
     updateJenkinsVersionSpec: &update-jenkins-version-spec
       matchpattern: >-
         (.*<jenkins.version>)(.*)(</jenkins.version>.*)
