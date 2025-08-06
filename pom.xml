@@ -54,6 +54,14 @@
                 <role>maintainer</role>
             </roles>
         </developer>
+        <developer>
+            <id>timja</id>
+            <name>Tim Jacomb</name>
+            <roles>
+                <role>release</role>
+                <role>maintainer</role>
+            </roles>
+        </developer>
     </developers>
 
     <modules>
